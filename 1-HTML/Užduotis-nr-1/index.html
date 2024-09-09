@@ -30,8 +30,16 @@
     <a href="contacts.html"><p>For any questions or inquiries, please contact us.</p>
     </a>
     <h2>Subscribe</h2>
-    <label for="emailID">Subscribe to our newsletter here:</label>
+    <!-- <label for="emailID">Subscribe to our newsletter here:</label>
     <input type="email" id="emailID" placeholder="Enter your email">
-    <button type="submit">Subscribe</button>
+    <button type="submit">Subscribe</button> -->
+
+    <form action="/subscribe" method="post">
+        <fieldset style="width: 250px;">
+          <legend>Subscribe to the Newsletter</legend>
+          <input type="email" name="email">
+          <button>Subscribe</button>
+        </fieldset>
+      </form>
 </body>
 </html>
