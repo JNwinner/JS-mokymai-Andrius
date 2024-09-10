@@ -1,0 +1,36 @@
+body {
+    background: black;
+}
+
+h1{
+    background-color: white;
+    color: black;
+}
+
+h2 {
+background-color: grey;
+}
+
+.gallery {
+    background-color: white;
+}
+
+.content {
+    background-color: rgba(255, 254, 240, 0.915);
+}
+
+h3, a {
+  color: red;
+}
+
+p {
+    color: rgba(0, 0, 255, 0.729);
+    font-weight: bold;
+}
+
+a {
+    font-weight: bold;
+}
+
+
+
