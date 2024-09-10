@@ -1,0 +1,40 @@
+.first-block {
+    background-image: url(imgs/pexels-forhad-hossain-103842032-19388969.jpg);
+}
+
+.second-block {
+    background-image: url(imgs/pexels-lenzatic-2419320.jpg);
+}
+
+.third-block {
+    background-image: url(imgs/pexels-pascal-lottenbach-644965-1449840.jpg);
+}
+
+
+.first-block h1 {
+    background-color: rgba(120, 171, 180, 0.372);
+    color: white;
+}
+
+
+.second-block h1 {
+    background-color: rgba(128, 128, 128, 0.606);
+    color: white;
+}
+
+.third-block h1 {
+    background-color: rgba(128, 128, 128, 0.606);
+    color: white;
+}
+
+
+p {
+    background-color: rgba(176, 176, 176, 0.861);
+    color: white;
+    
+}
+
+
+
+
+
