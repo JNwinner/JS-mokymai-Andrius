@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMMET</title>
+</head>
+
+<body>
+
+    <h1 style="text-align: center;">Emmet</h1>
+
+    <h2>Child: ></h2>
+    <!-- div>ul>li -->
+
+    <div>
+        <ul>
+            <li></li>
+        </ul>
+
+        <!-- table>tr>td    -->
+
+        <table>
+            <tr>
+                <td></td>
+            </tr>
+        </table>
+
+        <h2>Sibling +</h2>
+
+        <!-- div+p -->
+
+        <div>
+            <p></p>
+        </div>
+
+        <!-- div+p+table+ul -->
+
+        <div></div>
+        <p></p>
+        <table></table>
+        <ul></ul>
+
+        <!-- div>p+h2 -->
+
+        <div>
+            <p></p>
+            <h2></h2>
+        </div>
+
+        <h2>Child: > </h2>
+
+        <!-- div>div>p>span>table -->
+
+        <div>
+            <div>
+                <p>
+                    <span>
+                        <table></table>
+                    </span>
+                </p>
+            </div>
+        </div>
+
+            <h2>Climb-up: ^</h2>
+
+            <!-- div>p>span^table -->
+
+            <div>
+                <p>
+                    <span></span>
+                </p>
+                <table></table>
+            </div>
+
+            <h2>Multiplication: *</h2>
+
+            <!-- div*6 -->
+
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+
+            <!-- ul>li*5 -->
+
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+
+            <h2>Grouping: ()</h2>
+
+            <!-- div>(header>h1+a)+(div>h2+p+ul>li*3)+(footer>p) -->
+
+            <div>
+                <header>
+                    <h1></h1>
+                    <a href=""></a>
+                </header>
+                <div>
+                    <h2></h2>
+                    <p></p>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+                <footer>
+                    <p></p>
+                </footer>
+            </div>
+
+            <h2>ID ir CLASS atributu operatoriai</h2>
+
+            <!-- div.class1 -->
+            <div class="class1"></div>
+            <!--div.class1.class2 -->
+            <div class="class1 class2"></div>
+            <!-- ul.somelist -->
+            <ul class="somelist"></ul>
+            <!-- p#someparagraph -->
+            <p id="someparagraph"></p>
+            <!--p#sometext.green-text.big-text -->
+            <p id="sometext" class="green-text big-text"></p>
+
+            <!-- ul#somelist>li.list-item*5>a.list-link -->
+            <ul id="somelist">
+                <li class="list-item">
+                    <a href="" class="list-link"></a>
+                </li>
+                <li class="list-item">
+                    <a href="" class="list-link"></a>
+                </li>
+                <li class="list-item">
+                    <a href="" class="list-link"></a>
+                </li>
+                <li class="list-item">
+                    <a href="" class="list-link"></a>
+                </li>
+                <li class="list-item">
+                    <a href="" class="list-link"></a>
+                </li>
+            </ul>
+     
+            <h2>ID ir CLASS kuria div žymą jei nenurodyta kitaip</h2>
+
+            <!-- .someclass -->
+
+            <div class="someclass"></div>
+
+            <!-- .first.second.third -->
+
+            <div class="first second third"></div>
+
+            <!-- #someid -->
+
+            <div id="someid"></div>
+
+            
+               
+
+
+
+</body>
+
+</html>
