@@ -1,0 +1,27 @@
+:root {
+    --red: #ff6f69;
+    --gold: #ffcc5c;
+}
+
+html, body {
+    --body-yellow: #ffeead;
+    background: var(--body-yellow);
+    color:  var(--red);
+}
+
+h2, p {
+    color: var(--red);
+}
+
+#navbar a {
+    color: var(--red);
+}
+
+.item {
+    background: var(--gold);
+}
+
+button {
+    background: var(--red);
+    color: var(--gold);
+}

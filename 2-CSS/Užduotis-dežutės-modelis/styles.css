@@ -1,0 +1,87 @@
+body {
+    background-color: bisque;
+}
+
+div {
+    background-color: rgba(165, 42, 42, 0.484);
+    max-width: 80%;
+    margin: 5em auto 5em;
+}
+
+#first-block {
+    border: 2px solid black;
+    box-shadow: 5px 5px 15px black;
+}
+
+#second-block {
+    padding: 5em;
+    border-radius: 150px;
+    box-shadow: 0 0  50px rgba(0, 0, 0, 0.5);
+}
+
+#third-block {
+    padding: 5em 0 5em 0;
+    border-bottom: 10px solid black;
+    border-right: 15px solid black;
+   
+}
+
+#fourth-block {
+    padding: 0 5em 1em;
+    border-radius: 20px 0 50px 0;
+}
+
+#fifth-block {
+    padding: 0 0 5em 0;
+    border-left: 10px dashed black;
+}
+
+#list-block ul li{
+    display: inline;
+    list-style: circle;
+}
+
+#form-block {
+    background-color: rgba(127, 255, 212, 0.324);
+    
+}
+
+#form-block form {
+    width: 750px;
+    padding: 1em;
+}
+
+#form-block form input, label{
+    display: block;
+}
+
+#p-block p, a {
+font-size: 2em;
+}
+
+#p-block mark:hover {
+    position: relative;
+    bottom: 10px;
+    cursor: pointer;
+
+}
+
+
+#p-block a:hover{
+    position: relative;
+    left: 20px;
+}
+
+#top-block {
+    background-color: salmon;
+    padding: 1em;
+    position: fixed;
+    bottom: 2em;
+    right: 2em;
+    margin: 0;
+}
+
+#top-block a {
+    text-decoration: none;
+    color: white;
+}
