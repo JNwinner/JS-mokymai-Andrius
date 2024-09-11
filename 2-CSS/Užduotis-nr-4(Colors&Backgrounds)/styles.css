@@ -1,13 +1,22 @@
 .first-block {
     background-image: url(imgs/pexels-forhad-hossain-103842032-19388969.jpg);
+    height: 250px;
+    background-size: cover;
+    background-position: bottom;
 }
 
 .second-block {
     background-image: url(imgs/pexels-lenzatic-2419320.jpg);
+    height: 250px;
+    background-size: cover;
 }
 
 .third-block {
     background-image: url(imgs/pexels-pascal-lottenbach-644965-1449840.jpg);
+    height: 250px;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 
@@ -29,7 +38,7 @@
 
 
 p {
-    background-color: rgba(176, 176, 176, 0.861);
+    background-color: rgba(61, 61, 61, 0.861);
     color: white;
     
 }
