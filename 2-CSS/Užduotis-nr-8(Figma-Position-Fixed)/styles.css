@@ -1,0 +1,102 @@
+body,
+h1,
+p,
+a {
+    margin: 0;
+    padding: 0;
+}
+
+.div1,
+.div2,
+.div3,
+.div4,
+.div5 {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div1 {
+    background-color: white;
+}
+
+.div2 {
+    background-color: #51CB65;
+}
+
+.div3 {
+    background-color: #816EF5;
+}
+
+.div4 {
+    background-color: #EA7B7B;
+}
+
+.div5 {
+    background-color: #D9D9D9;
+}
+
+.div1 span,
+.div2 span,
+.div3 span,
+.div4 span,
+.div5 span {
+    width: 100px;
+    height: 150px;
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 128px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%
+}
+
+.fixed-div {
+    max-width: 30vw;
+    display: flex;
+    gap: 4px;
+    flex-wrap: nowrap;
+    padding: 8px;
+    border-radius: 16px;
+    background: #F5F3F3;
+    position: fixed;
+    bottom: 34px;
+    left: 33vw;
+}
+
+.fixed-div a {
+    max-width:  60px;
+    color: #F17965;
+    font-family: Inter;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 26px;
+    letter-spacing: -0.75px;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 12px;
+    border: 2px solid #F17965;
+    transition: all 0.2s ease-in-out;
+}
+
+.fixed-div a:hover {
+    background-color: #F17965;
+    color: white;
+}
+
+.arrow-div {
+    border-radius: 200px;
+    border: 3px solid #959393;
+    padding: 16px;
+    position: fixed;
+    bottom: 4%;
+    right: 10%
+}
+
+.arrow-div:hover {
+    border: 3px solid salmon;
+    cursor: pointer;
+}
