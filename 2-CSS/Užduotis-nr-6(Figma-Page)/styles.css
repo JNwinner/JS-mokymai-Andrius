@@ -1,0 +1,84 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #E2E1E1;
+    
+}
+
+
+#content {
+    width: 476px;
+    height: 100vh;
+    margin: 25vh auto;
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    position: relative;
+}
+
+.top-span {
+    color: #959393;
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: 0.2px;
+    position: absolute;
+    left: 40%;
+    top: 2%;
+}
+
+h1 {
+    color: #121212;
+    font-weight: 700;
+    font-size: 128px;
+    margin: 0px;
+
+}
+
+.bottom-span {
+    color: #373636;
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: 0.2px;
+    margin-top: 35px;
+    position: absolute;
+    left: 22%;
+    top: 15%;
+}
+
+img {
+    position: absolute;
+    top: 10%;
+    left: 89%;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
