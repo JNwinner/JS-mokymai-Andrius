@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    margin: 0 auto;
+    font-family: "Montserrat", sans-serif;
+}
+
+nav {
+
+    background-color: #000000;
+    padding: 10px 50px;
+    height: 6vh;
+    display: flex;
+    align-items: center;
+
+}
+
+nav ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul li {
+    list-style: none;
+    display: inline-block;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 19px;
+}
+
+nav ul li a:hover {
+    color: #7209b7;
+}
+
+nav ul li img {
+    border: 2px solid white;
+    padding: 5px;
+    border-radius: 50%;
+}
+
+#content {
+    background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(background.png);
+    background-repeat: repeat;
+    background-size: 25%;
+    height: 75vh;
+    padding: 60px 120px 60px 120px;
+    margin: 0 auto;
+}
+
+
+.blck-div {
+    padding: 40px 30px;
+    background-color: #000000;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.blck-div .heading-div {
+    text-align: center;
+}
+
+.blck-div .heading-div h1 {
+    margin-bottom: 20px;
+}
+
+.cards-div {
+    margin-top: 40px;
+    display: flex;
+    gap: 40px;
+    flex-wrap: nowrap;
+
+}
+
+.cards-div .card {
+    max-width: 350px;
+    padding: 40px 20px 10px 20px;
+    border: 2px solid white;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.card:hover {
+    border: 2px solid #7209b7;
+    cursor: pointer;
+
+}
+
+.card img {
+    width: 127px;
+    height: 127px;
+    flex-shrink: 0;
+}
+
+.card h3 {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 800;
+    font-size: 24px;
+}
+
+.card hr {
+    width: 23px;
+    height: 3px;
+    color: #FFF;
+    background-color: #FFF;
+}
+
+.card p {
+    text-align: center;
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: 3px;
+
+}
+.card a {
+    margin-top: 15px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.card a:hover {
+    color: #7209b7;
+}
+
+footer {
+    background-color: #000000;
+    color: white;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer p {
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+}
