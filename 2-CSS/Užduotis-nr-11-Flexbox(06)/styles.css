@@ -74,11 +74,16 @@ nav li:nth-child(-n+3) a:hover {
 
 /* main */
 
-.content-block {
+.content-block { 
+    font-family: 'Roboto' sans-serif;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 22px;
     background-color: #EF5D69;
     display: flex;
     justify-content: space-around;
     padding: 60px 40px;
+
 }
 
 .content-block .column {
