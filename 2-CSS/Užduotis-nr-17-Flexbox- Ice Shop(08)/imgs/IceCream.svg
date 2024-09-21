@@ -1,0 +1,13 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="IceCream" clip-path="url(#clip0_1_62)">
+<path id="Vector" d="M24 16L16 30L8 16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_2" d="M7 11C7 8.61305 7.94821 6.32387 9.63604 4.63604C11.3239 2.94821 13.6131 2 16 2C18.3869 2 20.6761 2.94821 22.364 4.63604C24.0518 6.32387 25 8.61305 25 11V12C25.5304 12 26.0391 12.2107 26.4142 12.5858C26.7893 12.9609 27 13.4696 27 14C27 14.5304 26.7893 15.0391 26.4142 15.4142C26.0391 15.7893 25.5304 16 25 16H7C6.46957 16 5.96086 15.7893 5.58579 15.4142C5.21071 15.0391 5 14.5304 5 14C5 13.4696 5.21071 12.9609 5.58579 12.5858C5.96086 12.2107 6.46957 12 7 12V11Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_3" d="M18.3575 25.875L12.7137 16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_4" d="M20.7137 21.75L17.4287 16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_1_62">
+<rect width="32" height="32" fill="white"/>
+</clipPath>
+</defs>
+</svg>

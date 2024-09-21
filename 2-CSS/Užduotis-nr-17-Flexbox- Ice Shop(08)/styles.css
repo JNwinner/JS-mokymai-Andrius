@@ -1,0 +1,411 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+}
+
+header {
+    background-color: rgba(249, 87, 56, 1);
+    width: 100%;
+    position: relative;
+}
+
+.header-content {
+    max-width: 1250px;
+    height: auto;
+    margin: 0 auto;
+    padding: 10px 20px;
+    font-family: "Manrope", sans-serif;
+    color: white;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+nav .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+nav .logo .logo-txt {
+    display: flex;
+    flex-direction: column;
+}
+
+nav img {
+   padding: 8px;
+   border: 3px solid white;
+   border-radius: 50px;
+
+}
+
+nav p {
+    font-weight: 700;
+    font-size: 24px; 
+    margin-bottom: 0px;
+}
+
+nav span {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+nav ul li {
+    list-style: none;
+    margin-left: 20px;
+    display: inline-block;
+    height: 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    display: inline-block;
+    position: relative;
+    transition: border-bottom 0.3s ease;
+}
+
+nav ul li a:hover {
+    border-bottom: 2px solid rgba(239, 190, 16, 1);
+    color: rgba(239, 190, 16, 1) ;
+}
+
+.header-content h1 {
+    max-width: 550px;
+    margin-top: 100px;
+    font-family: "Sigmar One", sans-serif;
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 60px;
+    letter-spacing: 4px;
+}
+
+.header-content .yellow-txt {
+    color: rgba(239, 190, 16, 1) ;
+}
+
+.hero {
+    background-color: rgba(249, 87, 56, 1) ;
+    display: flex;
+    align-items: center;
+    padding: 40px 0;
+}
+
+.hero h1 {
+    z-index: 1;
+}
+
+/* .img-bcg {
+    background: radial-gradient(circle, rgba(249, 87, 56, 0.2) 20%, rgba(249, 87, 56, 1) 70%), url('imgs/image2.jpg') no-repeat center  center/cover;
+    width: 60%;
+    height: 80%;
+    position: absolute;  
+    right: 0;
+    bottom: 5%; 
+} */
+
+ /* gallery */
+
+ .main-gallery  {
+    width: 100%;
+    height: auto;
+    position: relative;
+ }
+
+ .gallery {
+    width: 100%;
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 50px 80px; 
+ }
+
+ .gallery h3 {
+    font-family: "Sigmar One", sans-serif;
+    font-weight: 400;
+    font-size: 48px;
+ }
+
+ .gallery .gallery-div {
+    display: flex;
+    margin-top: 40px;
+    gap: 10px;
+    flex-wrap: wrap;
+ }
+
+ .img-col1, .img-col2, .img-col3 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+ }
+ .img-absolute {
+   position: absolute;
+    left: 0;
+    bottom: 0;
+
+ }
+
+ /* carousel */
+
+ .main-carousel, .secondary-carousel {
+    width: 100%;
+    height: auto;
+    background-color: rgba(22, 71, 128, 1);
+
+ }
+
+ .carousel {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 40px 120px;
+
+ }
+
+ .carousel h3 {
+    font-family: "Sigmar One", sans-serif;
+    color: rgba(239, 190, 16, 1);
+    margin-bottom: 40px;
+    font-size: 48px;
+ }
+
+ /* about us */
+
+ .main-about-us {
+    width: 100%;
+    background-color: rgba(252, 246, 222, 1);
+    padding: 60px 120px;
+    
+ }
+
+ .about-us {
+    max-width: 1250px;
+    margin: 0 auto;
+    display: flex;
+    gap: 40px;
+
+ }
+
+ .about-us h3 {
+    font-family: "Sigmar One", sans-serif;
+    font-size: 48px;
+    color: rgba(22, 71, 128, 1);   
+ }
+
+ .about-us p {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    size: 32px;
+ }
+
+ .about-us .img-div {
+    max-width: 511px;
+    max-height: 481px;
+
+ }
+
+ .about-us p {
+    margin-top: 40px;
+    max-width: 550px;
+ }
+
+ .about-us .img-div img {
+    width: 100%;
+
+ }
+
+/* blog */
+
+.blog-main {
+    width: 100%;
+    background-color: rgba(252, 246, 222, 1);
+
+}
+
+.blog-main .blog {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 60px 120px;
+}
+
+
+.blog-main .blog h3 {
+    font-family: "Sigmar One", sans-serif;
+    font-weight: 400;
+    font-size: 48px;
+}
+
+.blog-main .blog p {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.card-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    
+}
+
+.card-gallery .card {
+    width: 241px;
+    height: auto;
+}
+
+
+.card {
+    border-radius: 12px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    outline: 2px solid rgba(244, 211, 94, 1) ;
+    cursor: pointer;
+    transform: scale(1.02);
+}
+
+
+.card .img-container {
+    position: reltaive;
+    width: 100%;
+}
+
+.card .img-container img {
+    width: 100%;
+    border-radius: 12px 12px 0 0;
+}
+
+
+.card  .bookmark {
+    width: 32px;
+    height: 32px;
+    padding: 2px 5px;
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    text-align: center;
+    top: 51%;
+    right: 3%;
+}
+
+.card .bookmark:hover {
+    background-color: rgba(244, 211, 94, 1);
+    cursor: pointer;
+}
+
+.card p {
+    font-family: "Manrope", sans-serif;
+    font-weight: 600;
+    padding: 10px 10px;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+/* footer */
+
+footer {
+    background-color: rgba(0, 0, 0, 1);
+}
+
+footer .footer-links {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 60px 120px;
+    display: flex;
+}
+
+.footer-links > *:not(:first-child) {
+    margin-left: 26%;
+}
+
+.footer-links ul {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-left: 0;
+
+
+}
+
+.footer-links ul li {
+   list-style: none;
+  
+}
+
+.footer-links ul li a {
+    font-family: "Manrope", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
+
+}
+
+.footer-links ul li:first-child a {
+    color: rgba(239, 190, 16, 1)
+}
+
+.footer-links a:hover {
+    color: rgba(239, 190, 16, 1);
+}
+
+.footer-copyright {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 20px 120px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-copyright p {
+    color: white;
+    font-family: "Manrope", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+
+}
+
+.footer-social a {
+    margin-left: 25px;
+}
+
+.footer-copyright svg {
+    color: white;
+}
+
+.footer-social svg:hover {
+    color: rgba(239, 190, 16, 1);
+}
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
