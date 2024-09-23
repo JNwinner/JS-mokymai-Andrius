@@ -1,0 +1,449 @@
+* {box-sizing: border-box;}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #222;
+}
+
+
+.container  {
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.flex-container {
+    display: flex;
+}
+
+/* header */
+
+header {height: 120px;}
+
+header.flex-container {
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+header div a {
+    font-family: "Raleway", sans-serif;
+    font-weight: 700;
+    font-size: 1.375rem;
+    color: #222;
+    text-decoration: none;
+    display: block;
+    min-width: 300px;
+}
+
+.mobile {
+    display: none;
+}
+
+
+header nav ul li {
+    list-style: none;
+    margin-left: 60px;
+}
+
+
+header nav ul li a {
+    text-decoration:  none;
+    color: #222;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    letter-spacing: 1px;
+}
+
+header nav ul li a.active {color: #eb5757;}
+
+/* banner */
+.banner {
+    background-image: url("../img/bg1.png");
+    background-size: cover;
+    height: 880px;
+    color: #fff;
+}
+
+.banner .container {
+    text-align: center;
+}
+
+.banner-btn {
+    justify-content: center;
+}
+
+h1 {
+    margin: 0;
+    padding-top: 272px;
+    text-transform: uppercase;
+    font-size: 5rem;
+    font-weight: 700;
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+}
+
+.banner p {
+    font-size: 2.5rem;
+    line-height: 54px;
+    margin-bottom: 43px;
+}    
+
+.banner-btn button:hover {
+    cursor: pointer;
+}
+
+.banner-btn button {
+    width: 232px;
+    height: 52px;
+    border: none;
+    margin: 0 10px;
+    font-size: 1rem;
+    line-height: 21px;
+    letter-spacing: 1px;
+}
+
+.banner-btn .btn1,.highlight {
+    background-color: #eb5757;
+    color: #fff;
+}
+
+.banner-btn .btn2  {
+    background-color: #fff;
+    color: #eb5757;
+}
+
+/* highlight */
+.highlight {
+    min-height: 132px;
+}
+
+.highlight.flex-container {
+    justify-content: center;
+    align-items: center;
+}
+
+.highlight p {
+    margin: 0;
+    max-width:  950px;
+    text-align: center;
+}
+
+/* sections  */
+
+section {
+    text-align: center;
+    padding: 93px 0;
+}
+
+section h2 {
+    margin: 0 0 19px 0;
+    text-transform: uppercase;
+    font-size: 3.125 rem;
+    letter-spacing: 2px;
+    font-weight: 700;
+    font-family: 'Raleway', sans-serif;
+}
+
+section h2::after {
+    content: "";
+    display: block;
+    width: 31px;
+    border-top: 5px solid #eb5757;
+    margin: 22px auto;
+}
+
+section p {
+    max-width: 735px;
+    margin: 0 auto 71px;
+    font-size: 1.25rem;
+}
+
+/* section fonai */
+#atlikejai, #bilietai, #susisiekti {
+    background-color: #e5e5e5;
+}
+
+#galerija, #kaip-rasti {
+    background-color: rgba(235, 87, 87, 0.1);
+}
+
+/* atlikejai */
+
+.artists {
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.artist {
+    width: 238px;
+    margin: 45px 28px;
+    text-align: center;
+}
+
+.artist h4 {
+    margin: 36px 0 8px 0;
+    text-transform: uppercase;
+}
+
+.artist p {
+    padding: 0 20px;
+    margin: 0;
+    font-size: 1rem;
+}
+
+
+/* galerija */
+
+.foto-galerija.flex-container  {
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.thumbnail {
+    width: 230px;
+    height: 230px;
+    margin-bottom: 10px;
+}
+
+.thumbnail img {
+    width: 100%;
+}
+
+/* bilietai */
+
+.kainos.flex-container {
+    justify-content: space-between;
+}
+
+.bilietas {
+    background-color: #fff;
+    text-align: center;
+    max-width: 350px;
+    box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.5);
+}
+
+.bilietas h4 {
+    padding: 30px;
+    margin: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.bilietas p {
+    line-height: 21px;
+    margin: 29px 0 0 0;
+    font-size: 1rem;
+    padding: 0px 30px;
+}
+
+.bilietas .label, .bilietas .kaina {
+    letter-spacing: 2px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+
+}
+
+.bilietas .kaina {
+    color: #eb5757;
+    font-size: 1.625rem;
+}
+
+.bilietas button,
+ form button {
+    width: 216px;
+    height: 42px;
+    background-color: #eb5757;
+    border: none;
+    color: #fff;
+    font-size: 0.875rem;
+    letter-spacing: 1px;
+    margin: 23px 0;
+}
+
+/* kaip rasti */
+
+#kaip-rasti img {
+    max-width: 100%;
+}
+
+/* susisiekti */
+form.flex-container {
+    flex-direction: column;
+    align-items: center;
+    max-width: 329px;
+    margin: 71px auto 0;
+}
+
+input {
+    width: 100%;
+    height: 40px;
+    background-color: #fff;
+    color: #222;
+    border: none;
+    margin-bottom: 20px;
+} 
+
+form label {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    align-self: flex-start;
+} 
+
+form button {
+    background-color: #eb5757;
+    color: #fff;
+    border: none;
+    font-size: 0.875rem;
+    letter-spacing: 1px;
+
+}
+
+
+/* footer */
+
+footer {
+    height: 152px;
+}
+
+footer .container {
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+footer .copyright {
+    font-size: 1rem;
+    line-height: 21px;
+}
+
+footer nav ul li {list-style: none;}
+footer nav ul li a {
+    text-decoration: none;
+    color: #222;
+    margin-left: 40px;
+}
+
+
+@media all and (max-width:1200px)  {
+    .desktop {display: none;}
+    .mobile {
+        display: block;
+        position: relative;
+        width: 100%;
+    }
+    header.container {display: block;}
+    header div {min-width: 0;}
+    .mobile ul {
+        display: none;
+        position: absolute;
+        width: 100%;
+        top: 80px;
+        left: 0px;
+        padding: 20px 0;
+        background-color: white;
+    }
+    .mobile li {
+        margin: 0;
+        padding: 0 20px;
+    }
+
+    .mobile li a {
+        display: block;
+        padding: 10px 0;
+    }
+    .mobile li a:hover, .mobile a:active{
+        background-color: #eb5757;
+        color: #fff;
+        padding-left: 10px;
+        border-radius: 10px;
+    }
+
+    .mobile a.icon{
+        display: block;
+        position: absolute;
+        right: 0;
+        top: -10px;
+        color: #eb5757;
+    }
+
+    .highlight {padding: 20px 0;}
+    .thumbnail {
+        width: 31%;
+        margin: 10px;
+        height: 100%;
+    }
+
+    footer .container {
+        flex-direction: column;
+    }
+
+    .copyright {
+        padding: 20px 0;
+
+    }
+}
+
+@media all and (max-width: 1100px)  {
+    .kainos.flex-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .bilietas {
+        margin-bottom: 20px;
+    }
+}
+
+@media all and (max-width: 980px) {
+    .thumbnail {
+        width: 46%;
+        margin: 10px;
+        height: 100%;
+    }
+
+    .artist {
+        width: 40%;
+    }
+}
+
+@media all and (max-width:690px) {
+    footer ul {
+        flex-direction: column;
+        align-items: center;
+        margin:0;
+        padding:0;
+    }
+    footer nav ul li a {
+        margin:0;
+        padding-bottom:30px;
+    }
+}
+
+@media all and (max-width: 594px) {
+    .artist {width: 100%;}
+}
+
+@media all and (max-width: 540px) {
+    .banner h1 {
+        font-size: 2rem;
+    }
+    .thumbnail{
+        width: 100%;
+        height: 100%;
+    }
+
+
+}

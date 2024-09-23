@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Festivalis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Raleway:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        function navi() {
+            let meniu = document.getElementById('mobile-nav');
+            if(meniu.style.display === 'block') {
+                meniu.style.display = 'none'
+            } else {
+                meniu.style.display = 'block'
+            }
+        }
+    </script>
+</head>
+
+<body id="top">
+
+    <div class="container">
+        <header class="flex-container">
+            <div><a href="/">Festivalis ABC</a></div>
+            <nav class="desktop">
+                <ul class="flex-container">
+                    <li><a href="#" class="active">Pradžia</a></li>
+                    <li><a href="#atlikejai">Atlikėjai</a></li>
+                    <li><a href="#kaip-rasti">Kaip rasti?</a></li>
+                    <li><a href="#galerija">Galerija</a></li>
+                    <li><a href="#bilietai">Bilietai</a></li>
+                    <li><a href="#susisiekti">Susisiekti</a></li>
+                </ul>
+            </nav>
+            <nav class="mobile">
+                <ul class="flex-container" id="mobile-nav">
+                    <li><a href="#" class="active">Pradžia</a></li>
+                    <li><a href="#atlikejai">Atlikėjai</a></li>
+                    <li><a href="#kaip-rasti">Kaip rasti?</a></li>
+                    <li><a href="#galerija">Galerija</a></li>
+                    <li><a href="#bilietai">Bilietai</a></li>
+                    <li><a href="#susisiekti">Susisiekti</a></li>
+                </ul>
+                <a href="javascript:void(0);" class="icon" onclick="navi()">
+                    <i class="bi bi-list"></i>
+                </a>
+            </nav>
+        </header>
+    </div>
+
+    <div class="banner">
+        <div class="container">
+            <h1>Festival ABC</h1>
+            <p>Šiais metais Festivalis ABC vyks trakuose</p>
+            <div class="banner-btn flex-container">
+                <button class="btn btn1">Pirkti bilietą</button>
+                <button class="btn btn2">Žiūrėti atlikėjus</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="highlight flex-container">
+        <div class="container">
+            <p>In felis, ultricies vitae, morbi. Elementum hendrerit lectus laoreet gravida urna nunc, a, elementum.
+                Donec nisi vel scelerisque dignissim cursus auctor vel elementum quis. Mi sed in nec tincidunt facilisis
+                dolor mattis congue. Viverra fermentum ipsum.</p>
+        </div>
+    </div>
+
+    <section id="atlikejai">
+        <div class="container">
+            <h2>Atlikėjai</h2>
+            <p>In felis, ultricies vitae, morbi. Elementum hendrerit lectus laoreet gravida urna nunc, a, elementum.
+                Donec nisi vel scelerisque dignissim cursus auctor.</p>
+            <div class="artists flex-container">
+                <div class="artist">
+                    <img src="img/1.png" alt="Artist 1">
+                    <h4>tomke</h4>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+                <div class="artist">
+                    <img src="img/2.png" alt="Artist 2">
+                    <h4>upce</h4>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+                <div class="artist">
+                    <img src="img/3.png" alt="Artist 3">
+                    <h4>hendrei</h4>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+                <div class="artist">
+                    <img src="img/4.png" alt="Artist 4">
+                    <h4>polvek</h4>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+                <div class="artist">
+                    <img src="img/5.png" alt="Artist 5">
+                    <h4>pugr</h4>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+                <div class="artist">
+                    <img src="img/6.png" alt="Artist 6">
+                    <h4>lajs</h4>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+                <div class="artist">
+                    <img src="img/7.png" alt="Artist 7">
+                    <h4>lawew</h4>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="galerija">
+        <div class="container">
+            <h2>Galerija</h2>
+            <p>Atae, morbi. Elementum hendrerit lectus laoreet gravida urna nunc, a, elementum. Donec nisi vel
+                scelerisque cursus auctor.</p>
+            <div class="foto-galerija flex-container">
+
+                <div class="thumbnail"><a href="img/pic1.png"><img src="img/pic1.png" alt="foto1"></a></div>
+                <div class="thumbnail"><a href="img/pic2.png"><img src="img/pic2.png" alt="foto2"></a></div>
+                <div class="thumbnail"><a href="img/pic3.png"><img src="img/pic3.png" alt="foto3"></a></div>
+                <div class="thumbnail"><a href="img/pic4.png"><img src="img/pic4.png" alt="foto4"></a></div>
+                <div class="thumbnail"><a href="img/pic5.png"><img src="img/pic5.png" alt="foto5"></a></div>
+                <div class="thumbnail"><a href="img/pic6.png"><img src="img/pic6.png" alt="foto6"></a></div>
+                <div class="thumbnail"><a href="img/pic7.png"><img src="img/pic7.png" alt="foto7"></a></div>
+                <div class="thumbnail"><a href="img/pic8.png"><img src="img/pic8.png" alt="foto8"></a></div>
+                <div class="thumbnail"><a href="img/pic9.png"><img src="img/pic9.png" alt="foto9"></a></div>
+                <div class="thumbnail"><a href="img/pic10.png"><img src="img/pic10.png" alt="foto10"></a></div>
+                <div class="thumbnail"><a href="img/pic11.png"><img src="img/pic11.png" alt="foto11"></a></div>
+                <div class="thumbnail"><a href="img/pic12.png"><img src="img/pic12.png" alt="foto12"></a></div>
+                <div class="thumbnail"><a href="img/pic13.png"><img src="img/pic13.png" alt="foto13"></a></div>
+                <div class="thumbnail"><a href="img/pic14.png"><img src="img/pic14.png" alt="foto14"></a></div>
+                <div class="thumbnail"><a href="img/pic15.png"><img src="img/pic15.png" alt="foto15"></a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="bilietai">
+        <div class="container">
+            <h2>Bilietai</h2>
+            <p>Atae, morbi. Elementum hendrerit lectus laoreet gravida urna nunc, a, elementum. Donec nisi vel
+                scelerisque cursus auctor.</p>
+            <div class="kainos flex-container">
+                <div class="bilietas">
+                    <h4>1-os dienos bilietas</h4>
+                    <p>Neque cursus metus volutpat nulla euismod eu, phasellus nisl ultricies nibh at odio lacus
+                        pulvinar fermentum, neque tincidunt mattis magna</p>
+                    <p>
+                        <span class="label">Kaina</span>
+                        <span class="kaina">200€</span>
+                    </p>
+                    <button>Pirkti bilietą</button>
+                </div>
+
+                <div class="bilietas">
+                    <h4>2-jų dienų bilietas</h4>
+                    <p>Neque cursus metus volutpat nulla euismod eu, phasellus nisl ultricies nibh at odio lacus
+                        pulvinar fermentum, neque tincidunt mattis magna</p>
+                    <p>
+                        <span class="label">Kaina</span>
+                        <span class="kaina">300€ </span>
+                    </p>
+                    <button>Pirkti bilietą</button>
+    
+                </div>
+
+                <div class="bilietas">
+                    <h4>3-jų dienų bilietas</h4>
+                    <p>Neque cursus metus volutpat nulla euismod eu, phasellus nisl ultricies nibh at odio lacus
+                        pulvinar fermentum, neque tincidunt mattis magna</p>
+                    <p>
+                        <span class="label">Kaina</span>
+                        <span class="kaina">400€</span>
+                    </p>
+                    <button>Pirkti bilietą</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="kaip-rasti">
+        <div class="container">
+            <h2>Kaip rasti?</h2>
+            <p>Nibh habitant sed id tellus sem turpis commodo nulla sed eget arcu convallis facilisi ac vitae facilisi
+                sit nisl, diam</p>
+            <img src="img/map.png" alt="map">
+        </div>
+    </section>
+
+    <section id="susisiekti">
+        <div class="container">
+            <h2>Susisiekti</h2>
+            <form class="flex-container">
+                <label for="vardas">Vardas:</label>
+                <input type="text" name="vardas" id="vardas" required>
+                <label for="telefonas">Telefonas:</label>
+                <input type="tel" id="telefonas" name="telefonas" required>
+                <label for="email">El.paštas</label>
+                <input type="email" id="email" name="email" required>
+                <button>Siųsti</button>
+            </form>
+        </div>
+    </section>
+
+
+    <footer class="flex-container">
+        <div class="container flex-container">
+            <div class="copyright">
+                <p>Festivalis ABC, Visos teises saugumos.</p>
+            </div>
+            <nav>
+                <ul class="flex-container">
+                    <li><a href="#top">Pradžia</a></li>
+                    <li><a href="#atlikejai">Atlikėjai</a></li>
+                    <li><a href="#kaip-rasti">Kaip rasti?</a></li>
+                    <li><a href="#galerija">Galerija</a></li>
+                    <li><a href="#bilietai">Bilietai</a></li>
+                    <li><a href="#susisiekti">Susisiekti</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+
+
+</body>
+
+</html>

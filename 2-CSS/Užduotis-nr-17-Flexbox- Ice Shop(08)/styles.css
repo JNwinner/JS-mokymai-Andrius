@@ -42,15 +42,15 @@ nav .logo .logo-txt {
 }
 
 nav img {
-   padding: 8px;
-   border: 3px solid white;
-   border-radius: 50px;
+    padding: 8px;
+    border: 3px solid white;
+    border-radius: 50px;
 
 }
 
 nav p {
     font-weight: 700;
-    font-size: 24px; 
+    font-size: 24px;
     margin-bottom: 0px;
 }
 
@@ -78,7 +78,7 @@ nav ul li a {
 
 nav ul li a:hover {
     border-bottom: 2px solid rgba(239, 190, 16, 1);
-    color: rgba(239, 190, 16, 1) ;
+    color: rgba(239, 190, 16, 1);
 }
 
 .header-content h1 {
@@ -92,11 +92,11 @@ nav ul li a:hover {
 }
 
 .header-content .yellow-txt {
-    color: rgba(239, 190, 16, 1) ;
+    color: rgba(239, 190, 16, 1);
 }
 
 .hero {
-    background-color: rgba(249, 87, 56, 1) ;
+    background-color: rgba(249, 87, 56, 1);
     display: flex;
     align-items: center;
     padding: 40px 0;
@@ -115,126 +115,178 @@ nav ul li a:hover {
     bottom: 5%; 
 } */
 
- /* gallery */
+/* gallery */
 
- .main-gallery  {
+.main-gallery {
     width: 100%;
     height: auto;
     position: relative;
- }
+}
 
- .gallery {
+.gallery {
     width: 100%;
     max-width: 1250px;
     margin: 0 auto;
-    padding: 50px 80px; 
- }
+    padding: 50px 80px;
+}
 
- .gallery h3 {
+.gallery h3 {
     font-family: "Sigmar One", sans-serif;
     font-weight: 400;
     font-size: 48px;
- }
+}
 
- .gallery .gallery-div {
+.gallery .gallery-div {
     display: flex;
     margin-top: 40px;
     gap: 10px;
-    flex-wrap: wrap;
- }
+}
 
- .img-col1, .img-col2, .img-col3 {
+.img-col1,
+.img-col2,
+.img-col3 {
     display: flex;
     flex-direction: column;
     gap: 20px;
- }
- .img-absolute {
-   position: absolute;
+    max-width: 340px;
+}
+
+.gallery-div img {
+    max-width: 100%;
+}
+
+.img-absolute {
+    position: absolute;
     left: 0;
     bottom: 0;
+    max-width: 400px;
+    max-height: 500px;
 
- }
+}
 
- /* carousel */
+/* carousel */
 
- .main-carousel, .secondary-carousel {
+.main-carousel,
+.secondary-carousel {
     width: 100%;
     height: auto;
     background-color: rgba(22, 71, 128, 1);
 
- }
+}
 
- .carousel {
+.carousel {
     max-width: 1250px;
     margin: 0 auto;
     padding: 40px 120px;
 
- }
+}
 
- .carousel h3 {
+.carousel h3 {
     font-family: "Sigmar One", sans-serif;
     color: rgba(239, 190, 16, 1);
     margin-bottom: 40px;
     font-size: 48px;
- }
+}
 
- /* about us */
+/* about us */
 
- .main-about-us {
+.main-about-us {
     width: 100%;
     background-color: rgba(252, 246, 222, 1);
     padding: 60px 120px;
-    
- }
+    position: relative;
+}
 
- .about-us {
+.main-about-us .choco-ice {
+    position: absolute;
+    right: 50px;
+    top: -258px;
+}
+
+
+
+
+.about-us {
     max-width: 1250px;
     margin: 0 auto;
     display: flex;
     gap: 40px;
 
- }
+}
 
- .about-us h3 {
+.about-us h3 {
     font-family: "Sigmar One", sans-serif;
     font-size: 48px;
-    color: rgba(22, 71, 128, 1);   
- }
+    color: rgba(22, 71, 128, 1);
+}
 
- .about-us p {
+.about-us p {
     font-family: 'Manrope', sans-serif;
     font-weight: 700;
     size: 32px;
- }
+}
 
- .about-us .img-div {
+.about-us .img-div {
     max-width: 511px;
     max-height: 481px;
 
- }
+}
 
- .about-us p {
+.about-us p {
     margin-top: 40px;
     max-width: 550px;
- }
+}
 
- .about-us .img-div img {
+.about-us .img-div img {
     width: 100%;
 
- }
+}
+
+
+/* secondary corousel */
+
+.secondary-carousel {
+    position: relative;
+}
+
+.secondary-carousel .happy-girl {
+    position: absolute;
+    right: 30px;
+    top: -30px;
+    max-width: 300px;
+    max-height: 500px;
+}
+
+
 
 /* blog */
 
 .blog-main {
     width: 100%;
     background-color: rgba(252, 246, 222, 1);
+    position: relative;
+    overflow: hidden;
 
 }
 
+.blog-main .pink-icecream {
+    position: absolute;
+    max-width: 600px;
+    max-height: 600px;
+    left: 50px;
+    z-index: 1;
+    
+}
+
+
+
 .blog-main .blog {
-  max-width: 1250px;
-  margin: 0 auto;
-  padding: 60px 120px;
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 60px 120px;
+    position: relative;
+    z-index: 2;
+    
 }
 
 
@@ -242,6 +294,7 @@ nav ul li a:hover {
     font-family: "Sigmar One", sans-serif;
     font-weight: 400;
     font-size: 48px;
+    z-index: 2;
 }
 
 .blog-main .blog p {
@@ -252,9 +305,9 @@ nav ul li a:hover {
 
 .card-gallery {
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     gap: 15px;
-    
+
 }
 
 .card-gallery .card {
@@ -269,7 +322,7 @@ nav ul li a:hover {
 }
 
 .card:hover {
-    outline: 2px solid rgba(244, 211, 94, 1) ;
+    outline: 2px solid rgba(244, 211, 94, 1);
     cursor: pointer;
     transform: scale(1.02);
 }
@@ -286,7 +339,7 @@ nav ul li a:hover {
 }
 
 
-.card  .bookmark {
+.card .bookmark {
     width: 32px;
     height: 32px;
     padding: 2px 5px;
@@ -324,7 +377,7 @@ footer .footer-links {
     display: flex;
 }
 
-.footer-links > *:not(:first-child) {
+.footer-links>*:not(:first-child) {
     margin-left: 26%;
 }
 
@@ -338,8 +391,8 @@ footer .footer-links {
 }
 
 .footer-links ul li {
-   list-style: none;
-  
+    list-style: none;
+
 }
 
 .footer-links ul li a {
@@ -389,23 +442,33 @@ footer .footer-links {
 
 
 
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+
+    .main-about-us .choco-ice {
+        display: none;
+    }
+
+    .secondary-carousel .happy-girl {
+        display: none;
+    }
+
+    .img-absolute {
+        display: none;
+    }
+}
 
 
+@media screen and (max-width: 767px) {
 
+    .main-about-us .choco-ice {
+        display: none;
+    }
 
+    .secondary-carousel .happy-girl {
+        display: none;
+    }
 
-
-
- 
-
-
-
-
-
- 
-
-
-
-
-
-
+    .img-absolute {
+        display: none;
+    }
+}
