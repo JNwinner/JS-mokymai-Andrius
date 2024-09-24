@@ -1,0 +1,39 @@
+.features .bi {
+    font-size: 32px;
+    color: lightskyblue;
+  }
+  
+  .footer {
+    background-color: #000;
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 25px 0 15px;
+  }
+  
+  .footer a {
+    color: aqua;
+    text-decoration: none;
+  
+    &:hover {
+      color: #fff;
+    }
+  }
+  
+  nav, .card {
+      margin-bottom: 25px;
+  }
+  
+  .card {
+      flex-direction: row;
+  }
+  
+  #navbarNavDropdown {
+      justify-content: flex-end;
+  }
+  
+  img {
+      width: 100%;
+      display: block;
+  }
