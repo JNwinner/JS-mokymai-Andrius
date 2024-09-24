@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
+<body id="pagrindinis">
 
     <div class="container">
         <header>
@@ -33,10 +33,10 @@
                     <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
                             <a class="nav-link active text-success" href="#">Pagrindinis</a>
-                            <a class="nav-link ms-4" href="#">Apie mus</a>
-                            <a class="nav-link ms-4" href="#">Paslaugos</a>
+                            <a class="nav-link ms-4" href="#apie-mus">Apie mus</a>
+                            <a class="nav-link ms-4" href="#paslaugos">Paslaugos</a>
                             <a class="nav-link ms-4" href="#">Straipsniai</a>
-                            <a class="nav-link ms-4" href="#">Kontaktai</a>
+                            <a class="nav-link ms-4" href="#contact">Kontaktai</a>
                         </div>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
         </div>
     </div>
 
-    <div class="container gen-info">
+    <div id="paslaugos" class="container gen-info">
         <div class="row">
             <div class="col-lg-6 col-md-12 col-12 text-information-col left-col">
                 <div class="row">
@@ -87,7 +87,7 @@
 
     <section class="video container-fluid">
         <div class="container">
-            <h1 class="mb-4">Vaizdai iš mūsų įmonės</h1>
+            <h2 class="mb-4">Vaizdai iš mūsų įmonės</h2>
             <p class="mb-4">Nulla volutpat in ut risus imperdiet aenean justo, tristique neque scelerisque feugiat
                 adipiscing non nulla feugiat lacus sem sed maecenas</p>
             <div class="video-wrapper">
@@ -103,8 +103,8 @@
                 <div class="row statistics-row-top">
                     <div class="col-lg-6">
                         <p class="sub-heading">Mūsų statistika</p>
-                        <h2>Non sapien egestas mi, faucibus dis vel velit eu, quisque ultrices aliquet diam faucibus
-                            ridiculus.</h2>
+                        <h3>Non sapien egestas mi, faucibus dis vel velit eu, quisque ultrices aliquet diam faucibus
+                            ridiculus.</h3>
                     </div>
                 </div>
                 <div class="row statistics-row-bottom">
@@ -128,8 +128,188 @@
                         <h3>45</h3>
                         <p>Įmonės partnerės</p>
                     </div>
-                </div>        
+                </div>
     </section>
+
+    <section class="work-gallery">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-6">
+                    <h2 class="mb-4">Darbų galerija</h2>
+                    <p class="mb-4">Amet rutrum molestie nibh sed nulla facilisis commodo, dui in viverra lectus quis
+                        faucibus volutpat leo ut sed dignissim egestas</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-sm-12 d-flex justify-content-center mb-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="imgs/Rectangle 8.png" class="card-img-top" alt="photografer]">
+                        <div class="card-body">
+                            <h5 class="card-title">Pirmas projektas</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12 d-flex justify-content-center mb-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="imgs/Rectangle 9.png" class="card-img-top" alt="drinks and food">
+                        <div class="card-body">
+                            <h5 class="card-title">Antras projektas</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12 d-flex justify-content-center mb-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="imgs/Rectangle 10.png" class="card-img-top" alt="scene">
+                        <div class="card-body">
+                            <h5 class="card-title">Trečias projektas</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="subscribe">
+        <div class="container">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-lg-6 col-sm-12 text-center">
+                    <h2 class="mb-4">Prenumeruoti</h2>
+                    <p class="mb-4">Amet tristique et integer dolor mi nullam risus id dapibus ornare in morbi non
+                        adipiscing pellentesque facilisis sed amet, porta</p>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-0" type="search" placeholder="Jūsų el. pašto adresas"
+                            aria-label="Search">
+                        <button class="btn btn-success btn-lg px-4 gap-3" type="submit">Prenumeruoti</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="apie-mus" class="team">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-6 text-center">
+                    <h2 class="mb-4">Komanda</h2>
+                    <p class="mb-4">Gravida arcu consectetur ut fringilla augue risus enim sit mattis lacinia libero netus lectus
+                        aenean proin lobortis praesent lobortis at</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-12 d-flex justify-content-center mb-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="imgs/Rectangle 12.png" class="card-img-top" alt="scene">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Ona Onutienė</h5>
+                            <p class="card-text">Direktorė</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 d-flex justify-content-center mb-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="imgs/Rectangle 13.png" class="card-img-top" alt="scene">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Petras Petrauskas</h5>
+                            <p class="card-text">Reklamos vadovas</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 d-flex justify-content-center mb-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="imgs/Rectangle 14.png" class="card-img-top" alt="scene">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Inga Ingauskienė</h5>
+                            <p class="card-text">Marketingo vadovė</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 d-flex justify-content-center mb-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="imgs/Rectangle 15.png" class="card-img-top" alt="scene">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Giedrius Giedriauskas</h5>
+                            <p class="card-text">SEO specialistas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div id="contact" class="section contact">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-6 text-center">
+                        <h2 class="mb-4">Pakalbėkite apie tai kas jums svarbu</h2>
+                        <p class="mb-4">At nunc interdum suscipit sit justo, commodo amet tristique aliquet sit mi proin facilisi et, pharetra pellentesque id tortor tempus</p>
+                        <button class="btn btn-success btn-lg px-4 gap-3" type="submit">Susisiekti</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-2 col">
+                    <h2>nica reklama</h2>
+                    <p>Dictum bibendum nisl donec morbi at pharetra sed quis vitae integer pharetra, tincidunt morbi nec
+                        aliquam non lacus, sagittis non</p>
+                </div>
+                <div class="col-12 col-md-6 col-lg-2 col">
+                    <h3>Kontaktai</h3>
+                    <p>Adresas: Gatvė g. 24-10, Kaunas, 
+                       LT54877, Lietuva
+                    </p>
+                    <p>
+                        Telefonai pasiteiravimui:
+                        +370 123 45678
+                        +370 987 65432
+                    </p>
+                </div>
+                <div class="col-12 col-md-6 col-lg-2 col">
+                    <h3>Straipsniai</h3>
+                    <p class="white"><a href="#">Aenean convallis eros</a></p>
+                    <p>Vestibulum diam venenatis</p>
+                    <hr>
+                    <p class="white"><a href="#">Aenean convallis eros</a></p>
+                    <p>Vestibulum diam venenatis</p>
+                    <hr>
+                    <p class="white"><a href="">Aenean convallis eros</a></p>
+                    <p>Vestibulum diam venenatis</p>
+                </div>
+                <div class="col-12 col-md-6 col-lg-2 col">
+                    <h3>Navigacija</h3>
+                    <p class="white"><a href="#pagrindinis">Pagrindinis</a></p>
+                    <hr>
+                    <p class="white"><a href="#paslaugos">Paslaugos</a></p>
+                    <hr>
+                    <p class="white"><a href="#apie-mus">Apie mus</a></p>
+                    <hr>
+                    <p class="white"><a href="#">Straipsniai</a></p>
+                    <hr>
+                    <p class="white"><a href="#">Konktaktai</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <p>Visos teisės saugomos, nica reklama</p>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
 
 
 
