@@ -10,26 +10,9 @@ body {
     color: #5F6B81;
 }
 
-.container {
-    max-width: 1220px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.flex-container {
-    display: flex;
-}
-
 /* header */
 
-header {height: 120px;}
-
-header.flex-container {
-    justify-content: space-between;
-    align-items: center;
-}
-
-header div a {
+header a.navbar-brand {
     font-family: "Roboto Condensed", sans-serif;
     font-weight: 700;
     font-size: 1.625rem;
@@ -39,24 +22,14 @@ header div a {
     color: #878B9B;
 }
 
-header nav ul li {
-    list-style: none;
-    margin-left: 60px;
-    
-}
-
-header nav ul li a {
+header .navbar-nav a {
     text-decoration: none;
     color: #404445;
     font-family: "Roboto", sans-serif;
     font-size: 1rem;    
 }
 
-/* header nav ul li a:hover {
-    font-weight: 900;
-} */
-
-header nav ul li a.active {color:#43C45F; font-weight: 900;}
+header a.active {color:#43C45F; font-weight: 900;}
 
 /* banner */
 
@@ -64,9 +37,78 @@ header nav ul li a.active {color:#43C45F; font-weight: 900;}
     background-image: url(imgs/banner.jpg);
     background-size: cover;
     height: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .banner .container {
     text-align: center;
 }
 
+.banner h1 {
+    color: white;
+    font-weight: 500;
+    font-size: 4.35rem;
+}
+
+.banner p {
+    font-size: 26px;
+    color: #D5D7D8;
+}
+
+.banner button {
+    width: 191px;
+    padding: 10px 12px;
+}
+
+/* gen info */
+
+.container.gen-info {
+    padding: 20px 0 ;
+}
+
+.gen-info .left-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* video section */
+
+.video.container-fluid {
+    background-color: #F1F8FF;
+}
+
+.video .container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 120px;
+}
+
+.video .container h1 {
+   font-size: 2.5rem;
+   font-weight: 700;
+}
+
+.video .container p {
+    font-size: 1.125rem;
+    line-height: 22px;
+    max-width: 648px;
+}
+
+.video-wrapper {
+    width: 700px; 
+    height: 400px; 
+    margin-top: 20px;
+}
+
+.video-wrapper iframe {
+    width: 100%; 
+    height: 100%; 
+    border: 0; 
+}

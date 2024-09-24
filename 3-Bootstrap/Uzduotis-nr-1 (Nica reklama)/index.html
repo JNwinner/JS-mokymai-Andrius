@@ -18,47 +18,127 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<div class="container">
-    <header class="flex-container">
-        <div><a href="#">nica reklama</a></div>
-        <nav class="desktop">
-            <ul class="flex-container">
-                <li>
-                    <a class="active" href="#">Pagrindinis</a>
-                </li>
-                <li>
-                    <a href="#">Apie mus</a>
-                </li>
-                <li>
-                    <a href="#">Paslaugos</a>
-                </li>
-                <li>
-                    <a href="#">Straipsniai</a>
-                </li>
-                <li>
-                    <a href="#">Kontaktai</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-</div>
-
-<div class="banner">
-    <div class="container">
-        <h1>Įmonė besiverčianti reklama</h1>
-        <p>Įmonės pristatymas keliais sakiniais, pagrindinės veiklos apibūdinimas</p>
-        <button class="btn">Susisiekti</button>
-    </div>
-</div>
-
 <body>
 
+    <div class="container">
+        <header>
+            <nav class="navbar navbar-expand-lg bg-body-white">
+                <div class="container">
+                    <a class="navbar-brand fw-bold text-secondary" href="#">nica reklama</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <a class="nav-link active text-success" href="#">Pagrindinis</a>
+                            <a class="nav-link ms-4" href="#">Apie mus</a>
+                            <a class="nav-link ms-4" href="#">Paslaugos</a>
+                            <a class="nav-link ms-4" href="#">Straipsniai</a>
+                            <a class="nav-link ms-4" href="#">Kontaktai</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    <div class="banner">
+        <div class="container">
+            <h1 class="mb-4">Įmonė besiverčianti reklama</h1>
+            <p class="mb-4">Įmonės pristatymas keliais sakiniais, pagrindinės veiklos apibūdinimas</p>
+            <button type="button" class="btn btn-success">Susisiekti</button>
+        </div>
+    </div>
+
+    <div class="container gen-info">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-12 text-information-col left-col">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-12 information-block">
+                        <img class="icon mb-4" src="imgs/icon.chat.svg" alt="chat">
+                        <h3>Socialinių tinklų reklama</h3>
+                        <p class="mb-5">Mes siūlome reklamą įvairiuose socialiniuose tinkluose.</p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12 information-block">
+                        <img class="icon mb-4" src="imgs/icon.direction.svg" alt="direction">
+                        <h3>Reklama lauke</h3>
+                        <p class="mb-5">Mes siūlome reklamą įvairiuose stenduose ar plakatuose lauke.</p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12 information-block">
+                        <img class="icon mb-4" src="imgs/icon.headphones.svg" alt="headphones">
+                        <h3>Reklama per radiją</h3>
+                        <p>Mūsų sukurtas reklamas galėsite išgirsti per radiją.</p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12 information-block">
+                        <img class="icon mb-4" src="imgs/icon.phone.svg" alt="phone">
+                        <h3>Reklama telefonu</h3>
+                        <p>Reklamuosime jūsų paslaugas skambindami jūsų tikslinei auditorijai.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-12 photo-col">
+                <img class="img-fluid" src="imgs/img1.png" alt="people">
+            </div>
+        </div>
+    </div>
+
+
+    <section class="video container-fluid">
+        <div class="container">
+            <h1 class="mb-4">Vaizdai iš mūsų įmonės</h1>
+            <p class="mb-4">Nulla volutpat in ut risus imperdiet aenean justo, tristique neque scelerisque feugiat
+                adipiscing non nulla feugiat lacus sem sed maecenas</p>
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/qz0aGYrrlhU?si=qr22pahABiFlTjDL" frameborder="0"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="statistika">
+        <div class="statistics-section page-section">
+            <div class="container">
+                <div class="row statistics-row-top">
+                    <div class="col-lg-6">
+                        <p class="sub-heading">Mūsų statistika</p>
+                        <h2>Non sapien egestas mi, faucibus dis vel velit eu, quisque ultrices aliquet diam faucibus
+                            ridiculus.</h2>
+                    </div>
+                </div>
+                <div class="row statistics-row-bottom">
+                    <div class="col-6 col-md-3 col-lg-3">
+                        <img src="imgs/icon.basket.svg" alt="" class="img-fluid">
+                        <h3>145</h3>
+                        <p>Įgyvendinti projektai</p>
+                    </div>
+                    <div class="col-6 col-md-3 col-lg-3">
+                        <img src="imgs/icon.cup.svg" alt="" class="img-fluid">
+                        <h3>345</h3>
+                        <p>Kavos puodeliai</p>
+                    </div>
+                    <div class="col-6 col-md-3 col-lg-3">
+                        <img src="imgs/icon.dianmond.svg" alt="" class="img-fluid">
+                        <h3>87</h3>
+                        <p>Patenkinti klientai</p>
+                    </div>
+                    <div class="col-6 col-md-3 col-lg-3">
+                        <img src="imgs/icon.briefcase.svg" alt="" class="img-fluid">
+                        <h3>45</h3>
+                        <p>Įmonės partnerės</p>
+                    </div>
+                </div>        
+    </section>
 
 
 
 
 
-    
+
+
+
+
 </body>
 
 </html>
