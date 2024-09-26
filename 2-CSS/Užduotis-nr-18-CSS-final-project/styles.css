@@ -626,7 +626,7 @@ footer ul li a:hover {
     }
 
 }
- 
+
 
 
 
@@ -709,12 +709,12 @@ footer ul li a:hover {
     }
 
     section.casual .card-body h5,
-section.profesional .card-body h5 {
-    font-weight: 700;
-    font-size: 1.5rem;
-    line-height: 1.5rem;
-    letter-spacing: 0.2px;
-}
+    section.profesional .card-body h5 {
+        font-weight: 700;
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+        letter-spacing: 0.2px;
+    }
 
 
 }
