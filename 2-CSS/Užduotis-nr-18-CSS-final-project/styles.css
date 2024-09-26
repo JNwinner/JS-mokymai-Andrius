@@ -20,21 +20,22 @@ body {
 
 /* nav */
 
-header{
+header {
     padding: 20px 0;
 }
- 
- /* burger icon color to white */
+
+/* burger icon color to white */
 header button.navbar-toggler .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-}  
+}
 
 .navbar-nav .nav-link {
     font-weight: 700;
     font-size: 1.25rem;
 }
+
 .nav-link:hover {
-    color: violet!important;
+    color: violet !important;
 }
 
 header nav .profile {
@@ -91,14 +92,14 @@ header nav .profile .view-prof {
         cursor: pointer;
     }
 }
+
 /* banner */
 
 .banner {
     width: 100%;
-    height: 900px ;
-} 
+}
 
-.banner .banner-left  {
+.banner .banner-left {
     padding-right: 100px;
     position: relative;
 }
@@ -132,7 +133,7 @@ header nav .profile .view-prof {
     border-radius: 100px;
     padding: 8px 12px;
 
-   
+
 }
 
 .banner .banner-left input {
@@ -165,11 +166,11 @@ header nav .profile .view-prof {
 
 }
 
-.banner .banner-right  {
-   position: relative;
+.banner .banner-right {
+    position: relative;
 }
 
-.banner .banner-right  .banner-img {
+.banner .banner-right .banner-img {
     width: 100%;
     height: 100%;
     object-fit: contain;
@@ -198,15 +199,12 @@ header nav .profile .view-prof {
     gap: 20px;
 }
 
-.collections  .caret {
+.collections .caret {
     position: absolute;
     right: 16%;
     bottom: 7%;
 }
-.collections .col-3 img {
-    max-width: 446px;
-    max-height: 570px;
-}
+
 
 /* casual / profesional / stepping-style */
 section.casual,
@@ -221,14 +219,22 @@ section.casual h3,
 section.profesional h3 {
     font-weight: 700;
     font-size: 4rem;
-    line-height: 4rem;  
+    line-height: 4rem;
 }
 
 section.casual .line {
     width: 94px;
     border: 2px solid #5F5F5F;
     display: inline-block;
-    
+
+}
+
+section.casual .show {
+    display: none;
+}
+
+section.profesional .show {
+    display: none;
 }
 
 section.profesional .line {
@@ -243,13 +249,14 @@ section.stepping-style .line {
     display: inline-block;
 }
 
+
 section.casual .style,
 section.profesional .style,
 section.stepping-style .style {
     font-weight: 700;
     font-size: 2.5rem;
     line-height: 2.5rem;
-    color:#5F5F5F;
+    color: #5F5F5F;
 }
 
 section.casual p,
@@ -272,9 +279,10 @@ section.profesional button {
     color: #fff;
     font-size: 10px;
     letter-spacing: 5px;
+    margin-left: auto;
 
     &:hover {
-        background-color: violet!important;
+        background-color: violet !important;
     }
 }
 
@@ -283,7 +291,7 @@ section.profesional .card {
     --bs-card-border-color: initial;
     position: relative;
     transition: transform 0.3 ease;
-    
+
     &:hover {
         outline: 1px solid violet;
         cursor: pointer;
@@ -319,15 +327,15 @@ section.profesional .card-body p.price {
 section.casual .card .new,
 section.profesional .card .new {
     position: absolute;
-    bottom: 20%;
+    bottom: 150px;
     width: 119px;
     height: 44px;
-    background-color:#423496 ;
-    font-size: 1.25rem ;
+    background-color: #423496;
+    font-size: 1.25rem;
     line-height: 1.25rem;
     letter-spacing: 0.2px;
     text-align: center;
-    text-transform: uppercase;  
+    text-transform: uppercase;
 }
 
 section.casual .card .item-favorite,
@@ -340,7 +348,7 @@ section.profesional .card .item-favorite {
     font-size: 28px;
     right: 2%;
     top: 2%;
-    
+
     &:hover {
         background-color: violet;
         cursor: pointer;
@@ -379,8 +387,9 @@ section.profesional .circle.green {
 section.profesional .circle.orange {
     background-color: #F8A0A7;
 }
+
 section.profesional .circle.light-blue {
-    background-color:#6E8BC5;
+    background-color: #6E8BC5;
 }
 
 
@@ -389,31 +398,38 @@ section.casual .circle.brown,
 section.profesional .circle.brown {
     background-color: #512A1E;
 }
+
 section.casual .circle.light-brown,
 section.profesional .circle.light-brown {
     background-color: #CB988F;
 }
+
 section.casual .circle.purple,
 section.profesional .circle.purple {
     background-color: #4C4B90;
 }
+
 section.casual .circle.dark-grey,
 section.profesional .circle.dark-grey {
-    background-color: #2C2C2C ;
+    background-color: #2C2C2C;
 }
+
 section.casual .circle.black,
 section.profesional .circle.black {
     background-color: #000000;
-    border: 1px solid #5F5F5F ;
+    border: 1px solid #5F5F5F;
 }
+
 section.casual .circle.red,
 section.profesional .circle.red {
     background-color: #C92976;
 }
+
 section.casual .circle.yellow,
 section.profesional .circle.yellow {
-    background-color: #D7B606 ;
+    background-color: #D7B606;
 }
+
 section.casual .circle.white,
 section.profesional .circle.white {
     background-color: #E5E5E5;
@@ -424,12 +440,20 @@ section.profesional .circle.white {
 section.sale.container-fluid,
 section.stepping-style.container-fluid {
     padding: 40px 0;
-    background-image: url(imgs/collections/Ellipse\ 42.png);
+    background-image: url(imgs/collections/Ellipse42.png);
     width: 100%;
     height: 50vh;
     background-repeat: no-repeat;
-    background-position: center;
+}
+
+section.sale.container-fluid {
     background-size: 1000px;
+    background-position: center;
+}
+
+section.stepping-style.container-fluid {
+    background-size: 800px;
+    background-position: 60%
 }
 
 section.sale.container-fluid h1 {
@@ -437,6 +461,23 @@ section.sale.container-fluid h1 {
     font-weight: 700;
     font-size: 10.625rem;
     line-height: 11.25rem;
+}
+
+section.stepping-style.container-fluid button {
+    text-transform: uppercase;
+    width: 245px;
+    height: 48px;
+    border-radius: 30px;
+    background-color: #FFF;
+    color: #000000;
+    font-weight: 700;
+    font-size: 0.625rem;
+    border: none;
+
+    &:hover {
+        background-color: violet;
+    }
+
 }
 
 section.stepping-style.container-fluid h2 {
@@ -461,23 +502,219 @@ section.stepping-style.container-fluid .col-5 img {
 }
 
 
+/* footer */
+
+
+footer {
+    background-color: #000000;
+    color: #666;
+    padding: 50px 0;
+}
+
+footer h5 {
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.875rem;
+    margin-bottom: 20px;
+}
+
+footer ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+footer ul li {
+    margin-bottom: 10px;
+}
+
+footer ul li a {
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 1.25rem;
+    color: #666;
+    text-decoration: none;
+}
+
+footer ul li a:hover {
+    color: #999;
+}
 
 
 
+@media all and (min-width: 1024px) and (max-width: 1400px) {
+    .banner .banner-left .scroll {
+        display: none !important;
+    }
+
+    .banner .banner-right .caret {
+        display: none;
+    }
+
+    .collections .caret {
+        display: none;
+    }
+
+    section.sale.container-fluid h1 {
+        text-transform: capitalize;
+        font-weight: 700;
+        font-size: 7rem;
+        line-height: 7rem;
+    }
+
+    section.profesional h3 {
+        font-weight: 700;
+        font-size: 2.5rem;
+        line-height: 2.5rem;
+    }
 
 
 
+}
+
+
+@media all and (min-width: 768px) and (max-width: 992px) {
+
+    .banner .banner-left .scroll {
+        display: none !important;
+    }
+
+    .banner .banner-right .caret {
+        display: none;
+    }
+
+    .collections .caret {
+        display: none;
+    }
+
+    section.collections {
+        padding: 80px 0 40px;
+    }
+
+    .collections .col-sm-12 {
+        display: flex;
+        justify-content: center;
+        padding: 0;
+    }
+
+    section.profesional h3 {
+        font-weight: 700;
+        font-size: 2.5rem;
+        line-height: 2.5rem;
+    }
+
+    section.sale.container-fluid h1 {
+        text-transform: capitalize;
+        font-weight: 700;
+        font-size: 7rem;
+        line-height: 7rem;
+    }
+
+    section.casual .show {
+        display: block;
+    }
+
+    section.profesional .show {
+        display: block;
+    }
+
+    section.casual .card-body h5,
+    section.profesional .card-body h5 {
+        font-weight: 700;
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+        letter-spacing: 0.2px;
+    }
+
+}
+ 
 
 
 
+@media all and (max-width: 767px) {
+
+    .banner .banner-left .subheading.top {
+        font-size: 1.9rem;
+        font-weight: 700;
+    }
+
+    .banner .banner-left .subheading.bottom {
+        font-size: 1.3rem;
+        font-weight: 500;
+    }
+
+    .banner .banner-left h1 {
+        font-weight: 700;
+        font-size: 2.2rem;
+        line-height: 2.5rem;
+        letter-spacing: 2.5%;
+    }
+
+    .banner .col-sm-12.banner-left {
+        padding-right: 0;
+        text-align: left;
+        width: 100%;
+    }
+
+    .banner .col-sm-12.banner-right {
+        display: flex;
+        justify-content: center;
+    }
+
+    .banner .banner-left .scroll {
+        display: none !important;
+    }
+
+    .banner .banner-right .caret {
+        display: none;
+    }
+
+    .collections .caret {
+        display: none;
+    }
+
+    section.collections {
+        padding: 80px 0 40px;
+    }
+
+    .collections .col-sm-12 {
+        display: flex;
+        justify-content: center;
+        padding: 0;
+    }
+
+    .casual .container .row {
+        gap: 30px;
+    }
+
+    section.casual button,
+    section.profesional button {
+        margin-left: 0 !important;
+        margin-right: auto;
+    }
+
+    section.sale.container-fluid h1 {
+        text-transform: capitalize;
+        font-weight: 700;
+        font-size: 5rem;
+        line-height: 5rem;
+    }
 
 
+    section.casual .show {
+        display: block;
+    }
+
+    section.profesional .show {
+        display: block;
+    }
+
+    section.casual .card-body h5,
+section.profesional .card-body h5 {
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    letter-spacing: 0.2px;
+}
 
 
-
-
-
-
-
-
-
+}
