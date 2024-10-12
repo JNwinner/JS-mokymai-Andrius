@@ -152,15 +152,61 @@ if (totalPrice > 1000 && totalPrice < 2000 ) {
 Naudokite funkciją Math.random(). Sukurkite tris kintamuosius su atsitiktinėm reikšmėm nuo 0 iki 100. Paskaičiuokite jų aritmetinį vidurkį. Tada aritmetinį vidurkį atmetus tas reikšmes, kurios yra mažesnės nei 10 arba didesnės nei 90. Abu vidurkius atspausdinkite. Rezultatus apvalinkite iki sveiko skaičiaus.
 */
 
+let rN1 = Math.floor(Math.random() * 100) +1;
+let rN2 = Math.floor(Math.random() * 100) +1;
+let rN3 = Math.floor(Math.random() * 100) +1;
+
+let vidurkis = (rN1 + rN2 + rN3) / 3;
+console.log(rN1, rN2, rN3)
+console.log(vidurkis)
+
+let rSkaiciai = [rN1, rN2, rN3]
+let suma = 0;
+let count = 0;
+
+for(let i = 0; i < rSkaiciai.length; i++) {
+    if (!(rSkaiciai[i] < 10 || rSkaiciai[i] > 90)) {
+        suma += rSkaiciai[i]
+        count++
+    }
+}
+
+let avgFiltered = suma / count;
+console.log(Math.round(avgFiltered))
+
 
 
 /* 09.
 Padarykite skaitmeninį laikrodį, rodantį valandas, minutes ir sekundes. Valandom, minutėm ir sekundėm sugeneruoti panaudokite funkciją Math.random(). Sugeneruokite skaičių nuo 0 iki 300. Tai papildomos sekundės. Skaičių pridėkite prie jau sugeneruoto laiko. Atspausdinkite laikrodį prieš ir po sekundžių pridėjimo ir pridedamų sekundžių skaičių.
 */
 
+randomHours = Math.floor(Math.random() * 24);
+randomMinutes = Math.floor(Math.random() * 60);
+randomSeconds = Math.floor(Math.random() * 60);
+
+let additionalSeconds = Math.floor(Math.random() * 301);
+
+console.log(`Laikas: ${randomHours}:${randomMinutes}:${randomSeconds} \n Pridedamos sekundes: ${additionalSeconds}`)
+
+
+
 
 
 /* 10.
 Naudokite funkciją Math.random(). Sugeneruokite 6 kintamuosius su atsitiktinėm reikšmėm nuo 1000 iki 9999. Atspausdinkite reikšmes viename string'e, išrūšiuotas nuo didžiausios iki mažiausios, atskirtas tarpais. Naudoti ciklų ir masyvų NEGALIMA.
 */
+
+let rNumb1 = Math.floor(Math.random() * 9000) + 1000;
+let rNumb2 = Math.floor(Math.random() * 9000) + 1000;
+let rNumb3 = Math.floor(Math.random() * 9000) + 1000;
+let rNumb4 = Math.floor(Math.random() * 9000) + 1000;
+let rNumb5 = Math.floor(Math.random() * 9000) + 1000;
+let rNumb6 = Math.floor(Math.random() * 9000) + 1000;
+
+let arr = [rNumb1, rNumb2, rNumb3, rNumb4, rNumb5, rNumb6];
+
+let sortedArr = arr.sort((a,b) => b - a);
+
+console.log(sortedArr.join(' '))
+
 
