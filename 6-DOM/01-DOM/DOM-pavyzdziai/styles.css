@@ -1,0 +1,54 @@
+body {background-color: bisque;}
+
+body > div {
+    background: white;
+    padding: 2em;
+    margin: 5em;
+}
+
+#tryliktas .parametrai {
+    display: flex;
+    margin-bottom: 2em;
+}
+
+#tryliktas .parametrai .parametras {
+    width: 20%;
+    padding: 5px 10px;
+}
+
+#tryliktas #div-keitimui {
+    width: 100px;
+    height: 100px;
+    background-color: burlywood;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+textarea {
+    width: 100%;
+}
+
+#keturiolikas textarea {
+    background-color: #ececec;
+    border: 1px solid #bebebe;
+}
+
+#sesioliktas .skirtukas {
+    border: 1px dotted grey;
+    padding: 1em;
+}
+
+#sesioliktas .skirtukas#antras-skirtukas {
+    display: none;
+}
+
+#septynioliktas #perjungti-tekstas {
+    display: none;
+}
+
+#astuonioliktas #kitas-perjungti-tekstas {
+    display: none;
+}
+

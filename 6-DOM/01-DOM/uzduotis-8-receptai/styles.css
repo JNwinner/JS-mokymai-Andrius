@@ -1,0 +1,109 @@
+h1, h2, h4 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+}
+
+p {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+
+body {
+    background-color: whitesmoke;
+}
+
+.container.receptai {
+    margin-top: 20px;
+    padding: 50px 120px;
+    background-color: #fff;
+    border-radius: 25px;
+}
+
+.container.receptai .row {
+    margin-top: 50px;
+}
+
+.container.receptai .card {
+    position: relative;
+    max-width: 350px;
+    height: 450px;
+    margin-bottom: 35px;
+}
+
+
+.container.receptai .card:hover {
+    box-shadow: 0 0 5px 2px #83a783;
+    cursor: pointer;
+}
+
+.container.receptai .card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+
+
+.container.range {
+    margin-top: 20px;
+    padding: 50px 120px;
+    background-color: #fff;
+    border-radius: 25px;
+}
+
+.container.range .slider-container {
+    position: relative;
+    width: 200px;
+    margin-top: 40px;
+}
+
+.container.range .slider-container span {
+     font-weight: bold;
+}
+
+
+.container.range input {
+   width: 500px;
+}
+
+.container.range #rangeValue,
+.container.range #rangeName {
+    font-size: 22px;
+    font-weight: 700;
+    color: rgb(27, 144, 27);
+}
+
+
+.container.recipes {
+    margin-top: 20px;
+    padding: 50px 120px;
+    display: block;
+    background-color: #fff;
+    border-radius: 25px;
+}
+
+.container.recipes.show {
+    display: block;
+}
+
+.green {
+    border: 2px solid rgba(0, 128, 0, 0.728);
+    background: rgba(135, 182, 135, 0.295);
+    box-shadow: 0 0 5px 2px #83a783;
+}
+
+.checked1,
+.checked2,
+.checked3 {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    right: -10px;
+    top: -15px;
+    display: none;
+}
+
+.show {
+    display: block;
+}

@@ -1,0 +1,83 @@
+body {
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+}
+
+#page-content {
+    background-color: #fff;
+    width: 100%;
+    max-width: 600px;
+    margin: 50px auto;
+}
+
+h1, h2 {
+    border-bottom: 1px solid #e3e3e3;
+    padding: 20px 30px;
+    margin: 0;
+    text-align: center;
+}
+
+.item-wrapper:not(:last-child) {
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.item-wrapper {
+    padding: 15px 30px;
+}
+
+.item-wrapper p {
+    margin: 2px 0;
+}
+p.id, p.when {font-size: 12px;}
+p.type {font-size: 16px;}
+p.amount {font-size: 20px;}
+.income {color: green;}
+.expense {color: red;}
+
+.balance-wrapper {
+    padding: 20px 30px;
+    background-color: #ededed;
+}
+
+h3 {
+    margin: 0;
+}
+
+/* add payment */
+/* .add-payment {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #0056b3;
+} */
+
+form {
+    padding: 5px 30px;
+    border-bottom: 1px solid #e3e3e3;
+}

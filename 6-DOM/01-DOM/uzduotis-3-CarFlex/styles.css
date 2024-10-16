@@ -1,0 +1,112 @@
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Catamaran', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    margin: 50px auto;
+    width: 100%;
+    max-width: 800px;
+    padding: 5px 0;
+    
+}
+
+main .header  {
+    width: 100%;
+    background-color: #ffb703;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    
+}
+
+main .header h1, h3 {
+    font-weight: 700;
+    text-align: center;
+    padding: 10px 0;
+}
+main .header p {
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 15px; 
+    font-size: 18px;   
+    font-weight: 400;
+    margin: 0;
+    padding: 20px;
+}
+
+main .content {
+ background-color: #14213df0;
+ border-bottom-left-radius: 25px;
+ border-bottom-right-radius: 25px;
+}
+
+main .content .info-block {
+    padding-bottom: 25px;
+}
+
+main .content h3 {
+    color: rgba(255, 255, 255, 0.903);
+    font-weight: 400;
+}
+
+main .content .form-select {
+    margin: 0 auto;
+    width: 80%;
+    font-family: 'Catamaran', sans-serif;
+    font-weight: 700;
+}
+
+main .content .form-select option {
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 400;
+}
+
+
+main .content .info-div {
+    padding: 35px;
+}
+
+main .content .txt-style {
+    font-family: 'Source Code Pro', monospace;
+    color: #ffb703;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+
+.btn-calc {
+    margin-top: 42px;
+    margin-bottom: 20px;
+    font-size: 22px;
+    font-family: 'Catamaran', sans-serif;
+    font-weight: 400;
+}
+
+#priceTotal, .price-tot {
+    color: white;
+    font-size: 32px;
+    font-weight: 700;
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+
+.error {
+    font-family: 'Source Code Pro', monospace;
+    color: #ffb703!important;
+    font-weight: 400;
+}
+
+.error-input {
+    border-color: red;
+    background-color: #e07b7bfb;
+}
+
+
+

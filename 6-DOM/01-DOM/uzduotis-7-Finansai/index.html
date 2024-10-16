@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pajamų ir išlaidų skaičiuoklė</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="scripts.js" defer></script>
+</head>
+<body>
+
+    <div id="page-content">
+        <h1>Pajamų ir išlaidų skaičiuoklė</h1>
+        <!-- <div class="add-payment">
+            <h2>Add New Payment</h2>
+            <form id="payment-form">
+                <div class="form-group">
+                    <label for="type">Type</label>
+                    <select id="type">
+                        <option value="income">Income</option>
+                        <option value="expense">Expense</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="amount">Amount</label>
+                    <input type="number" id="amount" required>
+                </div>
+                <div class="form-group">
+                    <label for="when">When</label>
+                    <input type="datetime-local" id="when" required>
+                </div>
+                <button type="submit">Add Payment</button>
+            </form>
+        </div> -->
+
+        <form id="payment-form">
+            <label for="amount">Irasykite suma</label>
+            <input type="number" id="amount" name="amount" required>
+            <button type="submit">Pateikti</button>
+        </form>
+        <div class="payments-wrapper"></div>
+        <div class="balance-wrapper"></div>
+    </div>
+    
+</body>
+</html>

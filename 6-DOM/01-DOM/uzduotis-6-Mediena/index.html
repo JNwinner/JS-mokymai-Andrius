@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Medienos skaičiuoklė</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous" defer></script>
+    <script src="js/scripts.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="calc-title col-12">
+          <h1>Medienos skaičiuoklė</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="matavimai mb-3 p-5 col-12 col-xl-7">
+          <h3>Išmatavimai</h3>
+          <p class="section-instruction">Pasirinkite išmatavimus:</p>
+          <div class="row choose-wood-row">
+            <div class="selections col-xl-4 col-lg-4 col-md-4">
+              <div class="inner-selection">
+                <img src="img/lentos_aukstis.jpg" alt="medienos storis" />
+                <label for="storis">Storis</label>
+                <select id="storis">
+                  <option value="50" selected="selected">50mm</option>
+                  <option value="100">100mm</option>
+                </select>
+              </div>
+            </div>
+            <div class="selections col-xl-4 col-lg-4 col-md-4">
+              <div class="inner-selection">
+                <img src="img/lentos_plotis.jpg" alt="medienos plotis" />
+                <label for="plotis">Plotis</label>
+                <select id="plotis">
+                  <option value="100" selected="selected">100mm</option>
+                  <option value="150">150mm</option>
+                </select>
+              </div>
+            </div>
+            <div class="selections col-xl-4 col-lg-4 col-md-4">
+              <div class="inner-selection">
+                <img src="img/lentos_ilgis.jpg" alt="medienos ilgis" />
+                <label for="ilgis">Ilgis</label>
+                <select id="ilgis">
+                  <option value="3000" selected="selected">3000mm</option>
+                  <option value="5000">5000mm</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <p class="section-instruction">Pasirinkite lentų kiekį:</p>
+          <input type="number" id="kiekis" value="1" min="1" step="1" />
+        </div>
+        <div class="suvestine mb-3 p-5 col-12 col-xl-4 offset-xl-1">
+          <h3>Suvestinė</h3>
+          <p>Statybinė mediena</p>
+          <div class="row info">
+            <div class="col">
+              <div class="row info-row-storis">
+                <div class="col-6 col">
+                  <div>Storis</div>
+                </div>
+                <div class="col-3 col">
+                  <div class="storis-info">0</div>
+                </div>
+                <div class="col-3 col">
+                  <div>mm</div>
+                </div>
+              </div>
+              <div class="row info-row-plotis">
+                <div class="col-6 col">
+                  <div>Plotis</div>
+                </div>
+                <div class="col-3 col">
+                  <div class="plotis-info">0</div>
+                </div>
+                <div class="col-3 col">
+                  <div>mm</div>
+                </div>
+              </div>
+              <div class="row info-row-ilgis">
+                <div class="col-6 col">
+                  <div>Ilgis</div>
+                </div>
+                <div class="col-3 col">
+                  <div class="ilgis-info">0</div>
+                </div>
+                <div class="col-3 col">
+                  <div>mm</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row lentos">
+            <div class="col">
+              <div class="row lentu-kiekis">
+                <div class="col-6 col">Lentų kiekis:</div>
+                <div class="col-3 col">
+                  <div class="kiekis-info">0</div>
+                </div>
+                <div class="col-3 col">
+                  <div>vnt.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row kubatura">
+            <div class="col">
+              <div class="row rezultatas">
+                <div class="col-6 col">Kubatūra:</div>
+                <div class="col-3 col">
+                  <div class="kubatura-info">0</div>
+                </div>
+                <div class="col-3 col">
+                  <div>m<sup>3</sup></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row kaina">
+            <div class="col">
+              <div class="row price">
+                <div class="col-6 col">VISO:</div>
+                <div class="col-3 col">
+                  <div class="amount">0</div>
+                  <p>€</p>
+                </div>
+                <div class="col-3 col">
+                  <div><span>+ PVM</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
