@@ -1,0 +1,21 @@
+.services-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    padding: 20px 50px;
+}
+
+.services-wrapper .services {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.services-wrapper .services .service {
+    background-color: aliceblue;
+    padding: 20px 50px;
+    color: salmon;
+    border-radius: 25px;
+}

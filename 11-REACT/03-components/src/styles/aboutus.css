@@ -1,0 +1,21 @@
+.about-us {
+    padding: 20px 50px;
+}
+
+.about-us .about-cards-wrapper {
+    padding: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 40px;
+    
+}
+
+
+.about-us .about-cards-wrapper .card {
+    display: flex;
+    flex-direction: column;
+
+    width: 300px;
+}
+

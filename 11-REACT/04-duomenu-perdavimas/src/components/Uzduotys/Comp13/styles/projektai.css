@@ -1,0 +1,31 @@
+.projektai {
+    background: whitesmoke;
+    color: rgba(0, 0, 0, 0.71);
+    border-radius: 25px;
+    padding: 50px;
+}
+
+.projektu-list {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+}
+
+.projektu-list p {
+    font-weight: 700;
+    color: black;
+}
+
+.projektu-list p span {
+    color: salmon;
+}
+
+.project {
+    width: 200px;
+    border: 2px solid gray;
+    padding: 50px;
+    border-radius: 25px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+
