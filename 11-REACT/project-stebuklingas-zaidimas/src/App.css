@@ -18,3 +18,15 @@ button:hover {
   background-color:#c23866;
   color:#fff;
 }
+
+.kortu-grid {
+  margin-top: 40px;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+img {
+  width: 200px;
+  height: 200px;
+}
