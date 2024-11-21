@@ -1,0 +1,35 @@
+.todo {
+    margin: 25px;
+    background-color: #edec3a;
+    color: #292328;
+    font-weight: 700;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.todo:hover {
+    background-color: #292328;
+    color:white;
+
+}
+
+label {
+    margin-left: 25px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+input {
+    margin-left: 15px;
+    margin-bottom: 25px;
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #292326;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.form-container {
+    margin-top: 20px;
+}
