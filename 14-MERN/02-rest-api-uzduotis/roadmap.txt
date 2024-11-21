@@ -1,0 +1,1386 @@
+Roadmap Overview
+    1.Project Initialization
+    2.Setting Up the Backend
+            Installing Dependencies
+            Configuring Express Server
+            Connecting to MongoDB with Mongoose
+            Defining the Developer Model
+            Creating Controllers for CRUD Operations
+            Setting Up API Routes
+    3.Setting Up the Frontend
+            Configuring EJS Templating
+            Structuring Views (Home & Add Developer)
+            Integrating React for Dynamic UI
+            Styling with CSS
+    4.Implementing Functionality
+            Adding a New Developer
+            Displaying Developers
+            Updating a Developer
+            Deleting a Developer
+    5.Enhancing User Experience
+            Form Validation
+            Responsive Design
+    6.Testing and Deployment
+
+1. Project Initialization 
+
+a. Create Project Directory
+Start by creating a new directory for your project and navigating into it.
+
+
+mkdir developer-directory
+cd developer-directory
+
+b. Initialize Node.js Project
+Initialize a new Node.js project with default settings.
+
+npm init -y
+
+This will create a package.json file with default configurations.
+
+
+2. Setting Up the Backend
+a. Installing Dependencies
+Install the necessary backend dependencies:
+        Express: Web framework for Node.js
+        Mongoose: ODM (Object Data Modeling) library for MongoDB 
+        EJS: Templating engine
+        Nodemon: Utility for automatically restarting the server during development
+Terminal:    
+npm install express mongoose ejs
+npm install --save-dev nodemon
+
+b. Configuring Express Server
+Create an entry point for your application, typically app.js.
+
+File: app.js 
+*******************************************************************************
+// Importing necessary modules
+import express from 'express';
+import mongoose from 'mongoose';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import apiRoutes from './routes/apiRoutes.js'; // We'll create this later
+
+// Initialize Express
+const app = express();
+
+
+// Set EJS as the templating engine
+app.set('view engine', 'ejs');
+
+// Set the views directory
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.set('views', path.join(__dirname, 'views'));
+
+// MongoDB connection URI
+const dbURI = 'your-mongodb-connection-string-here'; // Replace with your actual MongoDB URI
+
+// Connect to MongoDB
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => app.listen(3002, () => console.log('Server running on port 3002')))
+    .catch((err) => console.log(err));
+
+// Define Routes
+app.use('/api', apiRoutes); // API routes for CRUD operations
+
+// Render Home Page
+app.get('/', (req, res) => res.render('home'));
+
+// Render Add Developer Form
+app.get('/new', (req, res) => res.render('new'));
+*******************************************************************************
+
+Explanation:
+
+Imports:
+    express, mongoose, path, and url modules.
+    apiRoutes which will handle our API endpoints.
+Middleware:
+    express.json() to parse incoming JSON requests.
+    express.static('public') to serve static files like CSS, images, etc.
+Templating Engine:
+    Configured EJS as the view engine.
+    MongoDB Connection:
+    Connects to MongoDB using Mongoose.
+    Starts the server on port 3002 upon successful connection.
+Routes:
+    /api: Prefix for API endpoints.
+    /: Home page.
+    /new: Page to add a new developer.
+
+c. Connecting to MongoDB with Mongoose
+Ensure you have a MongoDB database ready. You can use MongoDB Atlas for a cloud-hosted solution or install MongoDB locally.
+
+Note: Replace 'your-mongodb-connection-string-here' with your actual MongoDB connection string.
+
+d. Defining the Developer Model
+Create a Mongoose schema and model for developers.
+
+Directory Structure:
+
+developer-directory/
+├── controllers/
+│   └── controllers.js
+├── models/
+│   └── developer.js
+├── public/
+│   └── css/
+│       └── index.css
+├── routes/
+│   └── apiRoutes.js
+├── views/
+│   ├── partials/
+│   │   ├── header.ejs
+│   │   └── footer.ejs
+│   ├── home.ejs
+│   └── new.ejs
+└── app.js
+
+
+File: models/developer.js
+*******************************************************************************
+import mongoose from 'mongoose';
+
+const developerSchema = new mongoose.Schema({
+    vardas: {
+        type: String,
+        required: true
+    },
+    tech: {
+        type: [String],
+        required: true
+    },
+    laisvas: {
+        type: Boolean,
+        default: true
+    },
+    location: {
+        type: {
+            type: String, // 'Point'
+            enum: ['Point'],
+            required: true
+        },
+        coordinates: {
+            type: [Number], // [longitude, latitude]
+            required: true
+        }
+    }
+});
+
+// Create a geospatial index on 'location'
+developerSchema.index({ location: '2dsphere' });
+
+const Developer = mongoose.model('Developer', developerSchema);
+
+export default Developer;
+*******************************************************************************
+
+Explanation:
+
+Fields:
+    vardas: Developer's name (String, required).
+    tech: Array of technologies (String, required).
+    laisvas: Availability status (Boolean, defaults to true).
+    location: GeoJSON Point (required for geospatial queries).
+        type: Must be 'Point'.
+        coordinates: Array containing [longitude, latitude].
+Indexing:
+    2dsphere index on location enables geospatial queries like finding developers near a location.
+
+e. Creating Controllers for CRUD Operations
+Controllers handle the logic for each API endpoint.
+
+File: controllers/controllers.js
+*******************************************************************************
+import Developer from '../models/developer.js';
+
+// GET: Retrieve developers based on proximity or all
+export const getDevelopers = (req, res) => {
+    const lng = parseFloat(req.query.lng);
+    const lat = parseFloat(req.query.lat);
+
+    if (!isNaN(lng) && !isNaN(lat)) {
+        Developer.aggregate([
+            {
+                $geoNear: {
+                    near: {
+                        type: 'Point',
+                        coordinates: [lng, lat]
+                    },
+                    distanceField: 'distance',
+                    spherical: true,
+                    maxDistance: 100000 // 100 km
+                }
+            }
+        ])
+            .then(devs => res.send(devs))
+            .catch(err => res.status(500).send(err.message));
+    } else {
+        Developer.find()
+            .then(devs => res.send(devs))
+            .catch(err => res.status(500).send(err.message));
+    }
+};
+
+// POST: Add a new developer
+export const addDeveloper = (req, res) => {
+    const { vardas, tech, laisvas, coordinates } = req.body;
+
+    if (!vardas || !tech || !coordinates || coordinates.length !== 2) {
+        return res.status(400).send({ error: 'Invalid requirements' });
+    }
+
+    const dev = new Developer({
+        vardas,
+        tech,
+        laisvas: laisvas !== undefined ? laisvas : true,
+        location: {
+            type: 'Point',
+            coordinates
+        }
+    });
+
+    dev.save()
+        .then(() => res.status(201).send(dev))
+        .catch(err => res.status(500).send(err.message));
+};
+
+// PUT: Update an existing developer
+export const updateDeveloper = (req, res) => {
+    const id = req.params.id;
+    const { vardas, tech, laisvas, coordinates } = req.body;
+
+    Developer.findById(id)
+        .then(dev => {
+            if (!dev) {
+                return res.status(404).send({ error: 'Developer not found' });
+            }
+
+            if (vardas !== undefined) dev.vardas = vardas;
+            if (tech !== undefined) dev.tech = tech;
+            if (laisvas !== undefined) dev.laisvas = laisvas;
+            if (coordinates !== undefined && coordinates.length === 2) {
+                dev.location.coordinates = coordinates;
+            }
+
+            return dev.save();
+        })
+        .then(updatedDev => res.status(200).send(updatedDev))
+        .catch(err => res.status(500).send(err.message));
+};
+
+// DELETE: Remove a developer
+export const deleteDeveloper = (req, res) => {
+    const id = req.params.id;
+
+    Developer.findByIdAndDelete(id)
+        .then(deletedDev => {
+            if (!deletedDev) {
+                return res.status(404).send({ error: 'Developer not found' });
+            }
+            res.status(200).send({ message: 'Developer deleted', deletedDev });
+        })
+        .catch(err => res.status(500).send(err.message));
+};
+
+*******************************************************************************
+Explanation:
+
+getDevelopers:
+    If lng and lat query parameters are provided, performs a geospatial query to find developers within maxDistance.
+    If no coordinates are provided, returns all developers.
+addDeveloper:
+    Validates the request body.
+    Creates and saves a new developer to the database.
+updateDeveloper:
+    Finds a developer by ID.
+    Updates provided fields.
+    Saves the updated developer.
+deleteDeveloper:
+    Finds and deletes a developer by ID.
+    Returns the deleted developer as confirmation.
+
+
+f. Setting Up API Routes
+Define API endpoints and link them with controllers.
+
+File: routes/apiRoutes.js
+*******************************************************************************
+import express from 'express';
+import { getDevelopers, addDeveloper, updateDeveloper, deleteDeveloper } from '../controllers/controllers.js';
+
+const router = express.Router();
+
+// GET /api/programuotojai
+router.get('/programuotojai', getDevelopers);
+
+// POST /api/programuotojai
+router.post('/programuotojai', addDeveloper);
+
+// PUT /api/programuotojai/:id
+router.put('/programuotojai/:id', updateDeveloper);
+
+// DELETE /api/programuotojai/:id
+router.delete('/programuotojai/:id', deleteDeveloper);
+
+export default router;
+*******************************************************************************
+
+
+Explanation:
+
+Routes:
+    /api/programuotojai: Handles GET and POST requests.
+    /api/programuotojai/:id: Handles PUT and DELETE requests for a specific developer by ID.
+
+3. Setting Up the Frontend
+a. Configuring EJS Templating
+EJS allows embedding JavaScript within HTML. We'll set up partials for common components like headers and footers.
+
+File: views/partials/header.ejs
+*******************************************************************************
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Developer Directory</title>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+
+*******************************************************************************
+
+File: views/partials/footer.ejs
+*******************************************************************************
+</body>
+</html>
+*******************************************************************************
+
+b. Structuring Views (Home & Add Developer)
+This is the home page where users can view, search, update, or delete developers, and navigate to add a new developer.
+
+File: views/home.ejs
+*******************************************************************************
+<%- include('partials/header'); %>
+
+<h1 class="title">Programuotojai API</h1>
+<div id="homepage">
+    <h2>Surask programuotoją šalia savęs!</h2>
+    <div id="button-container">
+        <a href="/new"><button class="add-dev-button">Pridėti Naują Programuotoją</button></a>
+    </div>
+    <div id="devs"></div>
+</div>
+
+<!-- Include Babel for JSX transformation -->
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<!-- Include React and ReactDOM -->
+<script src="https://unpkg.com/react@15/dist/react.js"></script>
+<script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+
+<script type="text/babel">
+    let Devs = React.createClass({
+        getInitialState: function() {
+            return { devs: [] };
+        },
+        render: function () {
+            let devs = this.state.devs.map((dev, index) => (
+                <li key={index}>
+                    <span className={dev.laisvas ? 'true' : 'false'}></span>
+                    <span className='name'>{dev.vardas}</span>
+                    <span className='rank'>{dev.tech.join(', ')}</span>
+                    <span className='dist'>{Math.floor(dev.distance / 1000)}km</span>
+                    <div className="button-group">
+                        <button className="update-button" onClick={() => this.handleUpdate(dev)}>Atnaujinti</button>
+                        <button className="delete-button" onClick={() => this.handleDelete(dev._id)}>Ištrinti</button>
+                    </div>
+                </li>
+            ));
+            return (
+                <div className="dev-container">
+                    <form id='search' onSubmit={this.handleSubmit}>
+                        <label htmlFor="ilguma">Ilguma:</label>
+                        <input type="number" id="ilguma" ref={(input) => this.lng = input} placeholder='ilguma' required />
+                        <label htmlFor="platuma">Platuma:</label>
+                        <input type="number" id="platuma" ref={(input) => this.lat = input} placeholder='platuma' required />
+                        <input type="submit" value='Rasti programuotojus' />
+                    </form>
+                    <ul>{devs}</ul>
+                </div>
+            );
+        },
+        handleSubmit: function(e) {
+            e.preventDefault();
+            let lng = this.lng.value;
+            let lat = this.lat.value;
+
+            fetch('/api/programuotojai/?lng=' + lng + '&lat=' + lat)
+                .then(response => {
+                    if (!response.ok) throw new Error('Network response was not ok');
+                    return response.json();
+                })
+                .then(json => {
+                    this.setState({ devs: json });
+                })
+                .catch(err => console.log('Error during fetch:', err));
+        },
+        handleDelete: function(devId) {
+            if (!confirm('Ar tikrai norite ištrinti šį programuotoją?')) return;
+
+            fetch('/api/programuotojai/' + devId, { method: 'DELETE' })
+                .then(response => {
+                    if (!response.ok) throw new Error('Nepavyko ištrinti');
+                    return response.json();
+                })
+                .then(deletedDev => {
+                    // Option 2: Automatically update the list without refreshing
+                    const updatedDevs = this.state.devs.filter(dev => dev._id !== deletedDev.deletedDev._id);
+                    this.setState({ devs: updatedDevs });
+                    console.log('Programuotojas ištrintas:', deletedDev);
+                })
+                .catch(err => console.log('Error during delete:', err));
+        },
+        handleUpdate: function(dev) {
+            // Example: Prompt user for new data (can be enhanced with a proper form/modal)
+            let newVardas = prompt("Įveskite naują vardą:", dev.vardas);
+            if (newVardas === null) return; // Cancelled
+
+            let newTech = prompt("Įveskite naujas technologijas (kableliais atskirtas sąrašas):", dev.tech.join(', '));
+            if (newTech === null) return; // Cancelled
+
+            let newLaisvas = confirm("Ar programuotojas dabar laisvas?");
+
+            const updatedPratimas = {
+                vardas: newVardas,
+                tech: newTech.split(',').map(t => t.trim()),
+                laisvas: newLaisvas,
+                // Optionally, update location here if needed
+            };
+
+            fetch('/api/programuotojai/' + dev._id, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(updatedPratimas)
+            })
+            .then(response => {
+                if (!response.ok) throw new Error('Nepavyko atnaujinti');
+                return response.json();
+            })
+            .then(updatedDev => {
+                const updatedDevs = this.state.devs.map(d => d._id === updatedDev._id ? updatedDev : d);
+                this.setState({ devs: updatedDevs });
+                console.log('Programuotojas atnaujintas:', updatedDev);
+            })
+            .catch(err => console.log('Error during update:', err));
+        }
+    });
+
+    ReactDOM.render(<Devs />, document.getElementById('devs'));
+</script>
+
+<%- include('partials/footer'); %>
+*******************************************************************************
+
+Explanation:
+
+Header & Footer:
+    Included via partials for consistency across pages.
+Title & Homepage Container:
+    Displays the main title and a section for content.
+Add Developer Button:
+    Redirects to the /new page to add a new developer.
+React Component (Devs):
+    State: Holds an array of developers.
+    Render: Displays a list of developers with their details and action buttons.
+    handleSubmit: Fetches developers based on provided longitude and latitude.
+    handleDelete: Deletes a developer and updates the state to remove the deleted developer from the list.
+    handleUpdate: Prompts the user to update developer details and sends a PUT request to update the developer.
+
+
+This is the page where users can add a new developer.
+
+File: views/new.ejs
+*******************************************************************************
+<%- include('partials/header'); %>
+
+<h1 class="title">Pridėti Naują Programuotoją</h1>
+<div id="homepage">
+    <div id="addDeveloper"></div>
+</div>
+
+<!-- Include Babel for JSX transformation -->
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<!-- Include React and ReactDOM -->
+<script src="https://unpkg.com/react@15/dist/react.js"></script>
+<script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+
+<script type="text/babel">
+    class AddDev extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                error: null,
+                success: null
+            };
+            this.handleAddDeveloper = this.handleAddDeveloper.bind(this);
+        }
+
+        handleAddDeveloper(e) {
+            e.preventDefault();
+
+            const vardas = this.vardas.value.trim();
+            const tech = this.tech.value.split(',').map(t => t.trim()).filter(t => t);
+            const laisvas = this.laisvas.checked;
+            const ilguma = parseFloat(this.ilguma.value);
+            const platuma = parseFloat(this.platuma.value);
+
+            // Basic client-side validation
+            if (!vardas || tech.length === 0 || isNaN(ilguma) || isNaN(platuma)) {
+                this.setState({ error: 'Prašome užpildyti visus laukelius tinkamai.', success: null });
+                return;
+            }
+
+            const dev = {
+                vardas,
+                tech,
+                laisvas,
+                coordinates: [ilguma, platuma]
+            };
+
+            fetch('/api/programuotojai', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(dev)
+            })
+            .then(response => {
+                if (!response.ok) throw new Error('Nepavyko pridėti programuotojo');
+                return response.json();
+            })
+            .then(data => {
+                this.setState({ success: 'Programuotojas pridėtas sėkmingai!', error: null });
+                // Optionally, reset the form fields
+                this.form.reset();
+                // Redirect to home page after a short delay
+                setTimeout(() => {
+                    window.location.href = '/';
+                }, 1500);
+            })
+            .catch(err => {
+                console.error('Error during POST:', err);
+                this.setState({ error: err.message, success: null });
+            });
+        }
+
+        render() {
+            return (
+                <div>
+                    <form id="addDevForm" onSubmit={this.handleAddDeveloper} ref={(f) => this.form = f}>
+                        <label htmlFor="vardas">Vardas:</label>
+                        <input type="text" id="vardas" ref={(input) => this.vardas = input} required />
+
+                        <label htmlFor="tech">Technologijos (kableliais atskirtas sąrašas):</label>
+                        <input type="text" id="tech" ref={(input) => this.tech = input} required />
+
+                        <label htmlFor="laisvas">Laisvas:</label>
+                        <input type="checkbox" id="laisvas" ref={(input) => this.laisvas = input} />
+
+                        <label htmlFor="ilguma">Ilguma:</label>
+                        <input type="number" step="0.0001" id="ilguma" ref={(input) => this.ilguma = input} required />
+
+                        <label htmlFor="platuma">Platuma:</label>
+                        <input type="number" step="0.0001" id="platuma" ref={(input) => this.platuma = input} required />
+
+                        <input type="submit" value="Pridėti Programuotoją" />
+                    </form>
+                    {this.state.error && <div className="error-message">{this.state.error}</div>}
+                    {this.state.success && <div className="success-message">{this.state.success}</div>}
+                </div>
+            );
+        }
+    }
+
+    ReactDOM.render(<AddDev />, document.getElementById('addDeveloper'));
+</script>
+
+<%- include('partials/footer'); %>
+*******************************************************************************
+
+Explanation:
+
+Header & Footer:
+    Included via partials for consistency.
+Title & Container:
+    Displays the main title and a container for the form.
+React Component (AddDev):
+    State: Manages error and success messages.
+    handleAddDeveloper: Handles form submission, performs client-side validation, sends a POST request to add a new developer, and provides feedback.
+    Render: Displays the form with fields for name, technologies, availability, longitude, and latitude. Shows error or success messages based on the state.
+
+
+4. Implementing Functionality
+a. Adding a New Developer
+Process:
+
+1.Navigate to /new: User accesses the "Add Developer" form.
+2.Fill Out Form: User inputs necessary details.
+3.Submit Form: Triggers handleAddDeveloper.
+4.Validation & Submission:
+    Validates input on the client-side.
+    Sends a POST request to the server.
+5.Server Processing:
+    Receives data, validates it.
+    Saves the new developer to MongoDB.
+6.Feedback:
+    On success: Shows a success message and redirects to the home page.
+    On failure: Displays an error message.
+
+Code Handling:
+
+Frontend: React component in new.ejs handles the form and submission.
+Backend: Express controller addDeveloper processes the POST request.
+
+b. Displaying Developers
+Process:
+
+1.Home Page: User accesses the home page at /.
+2.Search Form: User inputs longitude and latitude to find nearby developers.
+3.Submit Search: Triggers handleSubmit in the React component.
+4.Fetch Developers:
+    Sends a GET request with query parameters.
+    Receives a list of developers from the server.
+5Display List: Developers are rendered dynamically using React.
+
+Code Handling:
+Frontend: React component in home.ejs handles fetching and displaying developers.
+Backend: Express controller getDevelopers processes the GET request, performing geospatial queries if coordinates are provided.
+
+
+c. Updating a Developer
+Process:
+
+1.Click "Update": User clicks the "Atnaujinti" button next to a developer.
+2.Prompt for Details: A series of prompt dialogs ask for new values.
+3.Submit Update: Triggers handleUpdate in the React component.
+4.Validation & Submission:
+    Processes new input.
+    Sends a PUT request to the server with updated data.
+5.Server Processing:
+    Receives data, finds the developer by ID.
+    Updates the developer's details in MongoDB.
+6.Feedback:
+    On success: Updates the state to reflect changes.
+    On failure: Logs an error.
+
+Code Handling:
+Frontend: React component in home.ejs handles the update process.
+Backend: Express controller updateDeveloper processes the PUT request and updates the developer in the database.
+
+d. Deleting a Developer
+Process:
+
+1.Click "Delete": User clicks the "Ištrinti" button next to a developer.
+2.Confirm Deletion: A confirmation dialog appears.
+3.Submit Deletion: If confirmed, triggers handleDelete in the React component.
+4.Server Processing:
+    Sends a DELETE request to the server with the developer's ID.
+    Server deletes the developer from MongoDB.
+5.Feedback:
+    On success: Updates the React state to remove the developer from the list.
+    On failure: Logs an error.
+
+
+Code Handling:
+Frontend: React component in home.ejs handles the deletion process.
+Backend: Express controller deleteDeveloper processes the DELETE request and removes the developer from the database.
+
+
+5. Enhancing User Experience
+
+a. Form Validation
+Frontend Validation:
+    Ensures that all required fields are filled out correctly before submitting the form.
+    Trims input to remove unnecessary whitespace.
+    Checks if longitude and latitude are valid numbers.
+
+Backend Validation:
+    Validates the presence and format of required fields.
+    Ensures that coordinates are provided and correctly structured.
+
+b. Responsive Design
+CSS Enhancements:
+    Utilizes media queries to adjust layouts for different screen sizes.
+    Ensures that forms and buttons are accessible and user-friendly on mobile devices.
+
+Implementation:
+    Included in the CSS (public/css/index.css) are media queries to adjust the layout for smaller screens, ensuring that the application is mobile-friendly.
+
+6. Testing and Deployment
+a. Testing Locally
+
+1.Start the Server:
+npx nodemon app.js
+
+***
+Alternatively, if you've set up a script in package.json:
+    "scripts": {
+    "start": "nodemon app.js"
+    }
+Then run: npm start 
+***
+
+2.Access the Application:
+
+Open your browser and navigate to http://localhost:3002/.
+
+3.Test Functionality:
+    Add Developer: Navigate to /new, fill out the form, and submit.
+    Search Developers: Return to the home page, enter coordinates, and search.
+    Update Developer: Click "Atnaujinti" next to a developer and update details.
+    Delete Developer: Click "Ištrinti" next to a developer and confirm deletion.
+4.Verify Database Changes:
+    Use a MongoDB client like MongoDB Compass to verify that changes reflect in your database.
+
+b. Deployment Considerations
+Environment Variables:
+
+Store sensitive information like MongoDB URIs in environment variables.
+
+Install dotenv:
+
+npm install dotenv
+
+Update app.js:
+*******************************************************************************
+import dotenv from 'dotenv';
+dotenv.config();
+
+const dbURI = process.env.MONGODB_URI;
+*******************************************************************************
+
+Create a .env File:
+*******************************************************************************
+MONGODB_URI=your-mongodb-connection-string
+*******************************************************************************
+Note: Ensure .env is added to .gitignore to prevent it from being committed to version control.
+
+Hosting:
+
+Deploy your application to platforms like Heroku, Vercel, or DigitalOcean.
+
+Build Tools:
+
+Although not necessary for this setup, consider using build tools like Webpack or Babel for more complex front-end needs.
+
+Final Code Overview
+To ensure you have a clear understanding, here's a summary of where each part of the code resides and how they interact.
+
+1. Directory Structure
+
+developer-directory/
+├── controllers/
+│   └── controllers.js
+├── models/
+│   └── developer.js
+├── public/
+│   └── css/
+│       └── index.css
+├── routes/
+│   └── apiRoutes.js
+├── views/
+│   ├── partials/
+│   │   ├── header.ejs
+│   │   └── footer.ejs
+│   ├── home.ejs
+│   └── new.ejs
+└── app.js
+
+2. Backend Components
+    app.js: Sets up the Express server, connects to MongoDB, and defines main routes.
+    models/developer.js: Defines the Mongoose schema and model for developers.
+    controllers/controllers.js: Contains functions to handle CRUD operations.
+    routes/apiRoutes.js: Defines API endpoints and associates them with controller functions.
+3. Frontend Components
+    views/partials/header.ejs & views/partials/footer.ejs: Common HTML structure for all pages.
+    views/home.ejs: Home page displaying the list of developers and search functionality using React.
+    views/new.ejs: Page containing the form to add a new developer using React.
+    public/css/index.css: Stylesheet defining the look and feel of the application.
+4. React Components
+    In home.ejs: A React component (Devs) manages and displays the list of developers, handles searching, updating, and deleting.
+    In new.ejs: A React component (AddDev) manages the form to add a new developer and handles form submission.
+
+Detailed Step-by-Step Implementation
+Let's go through the steps in more detail, ensuring you can follow along and recreate the application.
+
+Step 1: Initialize the Project
+1.Create Project Directory and Navigate Into It:
+    mkdir developer-directory
+    cd developer-directory
+2.Initialize Node.js Project:
+    npm init -y
+
+Step 2: Install Dependencies
+1.Install Backend Dependencies:
+    npm install express mongoose ejs
+    npm install --save-dev nodemon
+2.Install Frontend Dependencies:
+Since we're using React within EJS, we'll include React via CDN links in our EJS files (no need for installation).
+
+Step 3: Set Up the Backend
+
+*******************************************************************************
+Create app.js:
+// app.js
+
+import express from 'express';
+import mongoose from 'mongoose';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import apiRoutes from './routes/apiRoutes.js';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const app = express();
+
+app.use(express.json());
+app.use(express.static('public'));
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
+const dbURI = process.env.MONGODB_URI;
+
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => app.listen(3002, () => console.log('Server running on port 3002')))
+    .catch((err) => console.log(err));
+
+app.use('/api', apiRoutes);
+
+app.get('/', (req, res) => res.render('home'));
+app.get('/new', (req, res) => res.render('new'));
+*******************************************************************************
+
+2.Create .env File:
+*******************************************************************************
+MONGODB_URI=your-mongodb-connection-string
+*******************************************************************************
+Replace your-mongodb-connection-string with your actual MongoDB URI.
+
+3.Update package.json Scripts:
+
+To use nodemon for automatic server restarts during development, add the following script.
+"scripts": {
+    "start": "nodemon app.js"
+}
+
+Step 4: Define the Developer Model
+
+1.Create models/developer.js:
+*******************************************************************************
+// models/developer.js
+
+import mongoose from 'mongoose';
+
+const developerSchema = new mongoose.Schema({
+    vardas: {
+        type: String,
+        required: true
+    },
+    tech: {
+        type: [String],
+        required: true
+    },
+    laisvas: {
+        type: Boolean,
+        default: true
+    },
+    location: {
+        type: {
+            type: String,
+            enum: ['Point'],
+            required: true
+        },
+        coordinates: {
+            type: [Number],
+            required: true
+        }
+    }
+});
+
+developerSchema.index({ location: '2dsphere' });
+
+const Developer = mongoose.model('Developer', developerSchema);
+
+export default Developer;
+
+*******************************************************************************
+
+Step 5: Create Controllers for CRUD Operations
+
+1.Create controllers/controllers.js:
+
+*******************************************************************************
+// models/developer.js
+
+import mongoose from 'mongoose';
+
+const developerSchema = new mongoose.Schema({
+    vardas: {
+        type: String,
+        required: true
+    },
+    tech: {
+        type: [String],
+        required: true
+    },
+    laisvas: {
+        type: Boolean,
+        default: true
+    },
+    location: {
+        type: {
+            type: String,
+            enum: ['Point'],
+            required: true
+        },
+        coordinates: {
+            type: [Number],
+            required: true
+        }
+    }
+});
+
+developerSchema.index({ location: '2dsphere' });
+
+const Developer = mongoose.model('Developer', developerSchema);
+
+export default Developer;
+*******************************************************************************
+
+Step 5: Create Controllers for CRUD Operations
+
+1.Create controllers/controllers.js:
+
+*******************************************************************************
+// controllers/controllers.js
+
+import Developer from '../models/developer.js';
+
+// GET: Retrieve developers based on proximity or all
+export const getDevelopers = (req, res) => {
+    const lng = parseFloat(req.query.lng);
+    const lat = parseFloat(req.query.lat);
+
+    if (!isNaN(lng) && !isNaN(lat)) {
+        Developer.aggregate([
+            {
+                $geoNear: {
+                    near: {
+                        type: 'Point',
+                        coordinates: [lng, lat]
+                    },
+                    distanceField: 'distance',
+                    spherical: true,
+                    maxDistance: 100000 // 100 km
+                }
+            }
+        ])
+            .then(devs => res.send(devs))
+            .catch(err => res.status(500).send(err.message));
+    } else {
+        Developer.find()
+            .then(devs => res.send(devs))
+            .catch(err => res.status(500).send(err.message));
+    }
+};
+
+// POST: Add a new developer
+export const addDeveloper = (req, res) => {
+    const { vardas, tech, laisvas, coordinates } = req.body;
+
+    if (!vardas || !tech || !coordinates || coordinates.length !== 2) {
+        return res.status(400).send({ error: 'Invalid requirements' });
+    }
+
+    const dev = new Developer({
+        vardas,
+        tech,
+        laisvas: laisvas !== undefined ? laisvas : true,
+        location: {
+            type: 'Point',
+            coordinates
+        }
+    });
+
+    dev.save()
+        .then(() => res.status(201).send(dev))
+        .catch(err => res.status(500).send(err.message));
+};
+
+// PUT: Update an existing developer
+export const updateDeveloper = (req, res) => {
+    const id = req.params.id;
+    const { vardas, tech, laisvas, coordinates } = req.body;
+
+    Developer.findById(id)
+        .then(dev => {
+            if (!dev) {
+                return res.status(404).send({ error: 'Developer not found' });
+            }
+
+            if (vardas !== undefined) dev.vardas = vardas;
+            if (tech !== undefined) dev.tech = tech;
+            if (laisvas !== undefined) dev.laisvas = laisvas;
+            if (coordinates !== undefined && coordinates.length === 2) {
+                dev.location.coordinates = coordinates;
+            }
+
+            return dev.save();
+        })
+        .then(updatedDev => res.status(200).send(updatedDev))
+        .catch(err => res.status(500).send(err.message));
+};
+
+// DELETE: Remove a developer
+export const deleteDeveloper = (req, res) => {
+    const id = req.params.id;
+
+    Developer.findByIdAndDelete(id)
+        .then(deletedDev => {
+            if (!deletedDev) {
+                return res.status(404).send({ error: 'Developer not found' });
+            }
+            res.status(200).send({ message: 'Developer deleted', deletedDev });
+        })
+        .catch(err => res.status(500).send(err.message));
+};
+*******************************************************************************
+
+Step 6: Set Up API Routes
+
+Create routes/apiRoutes.js:
+*******************************************************************************
+// routes/apiRoutes.js
+
+import express from 'express';
+import { getDevelopers, addDeveloper, updateDeveloper, deleteDeveloper } from '../controllers/controllers.js';
+
+const router = express.Router();
+
+// GET /api/programuotojai
+router.get('/programuotojai', getDevelopers);
+
+// POST /api/programuotojai
+router.post('/programuotojai', addDeveloper);
+
+// PUT /api/programuotojai/:id
+router.put('/programuotojai/:id', updateDeveloper);
+
+// DELETE /api/programuotojai/:id
+router.delete('/programuotojai/:id', deleteDeveloper);
+
+export default router;
+*******************************************************************************
+
+
+3. Setting Up the Frontend
+a. Create Partials for Common Components
+
+1.Create views/partials/header.ejs:
+*******************************************************************************
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Developer Directory</title>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+*******************************************************************************
+
+2.Create views/partials/footer.ejs:
+*******************************************************************************
+</body>
+</html>
+*******************************************************************************
+
+b. Create Home Page (home.ejs)
+As previously detailed, home.ejs contains the main interface for viewing, searching, updating, and deleting developers.
+
+File: views/home.ejs
+
+(Refer to the detailed home.ejs code provided earlier)
+
+c. Create Add Developer Form (new.ejs)
+This page allows users to add a new developer.
+
+File: views/new.ejs
+(Refer to the detailed new.ejs code provided earlier)
+
+
+4. Styling with CSS
+Create and customize your CSS to match the desired styling.
+
+File: public/css/index.css
+*******************************************************************************
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap');
+
+body{
+    font-family: Raleway, sans-serif;
+    color: #555;
+    background: #ff5252;
+    margin: 10px 30px;
+}
+
+.title{
+    color: #fff;
+    text-align: center;
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+#homepage{
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 20px;
+    background: #fdfdfd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+#button-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.add-dev-button {
+    padding: 10px 20px;
+    background-color: #007BFF; /* Blue */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.add-dev-button:hover {
+    background-color: #0056b3;
+}
+
+form {
+    max-width: 350px;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+label{
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+input[type="text"],
+input[type="number"]{
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+}
+
+input[type="checkbox"]{
+    margin-top: 10px;
+}
+
+input[type="submit"]{
+    background: #555;
+    color: #fff;
+    border: 0;
+    padding: 10px;
+    font-size: 18px;
+    width: 200px;
+    margin: 20px auto 0 auto;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background: #333;
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+}
+
+li{
+    padding: 15px;
+    background: #eee;
+    list-style-type: none;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+span{
+    display: inline-block;
+    margin: 0 20px;
+}
+
+span.dist{
+    color: green;
+    float: right;
+}
+
+span.true{
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    background: green;
+}
+
+span.false{
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    background: #ff5252;
+}
+
+/* Button Styles */
+.update-button, .delete-button {
+    margin-left: 10px; /* Adds space between the buttons */
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: Raleway, sans-serif; /* Consistent font */
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.update-button {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+
+.update-button:hover {
+    background-color: #45a049;
+}
+
+.delete-button {
+    background-color: #ff4d4d; /* Red */
+    color: white;
+}
+
+.delete-button:hover {
+    background-color: #ff1a1a;
+}
+
+/* Button Group for Consistent Spacing */
+.button-group {
+    display: flex;
+    gap: 10px; /* Consistent space between buttons */
+}
+
+/* Additional Styles for Add Developer Form */
+.error-message {
+    color: #ff1a1a;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.success-message {
+    color: #4CAF50;
+    text-align: center;
+    margin-top: 10px;
+}
+
+#addDeveloper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fdfdfd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 600px) {
+    body{
+        margin: 10px;
+    }
+
+    form, #addDeveloper {
+        padding: 10px;
+    }
+
+    input[type="text"],
+    input[type="number"]{
+        width: 100%;
+    }
+
+    input[type="submit"]{
+        width: 100%;
+    }
+
+    .add-dev-button {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .button-group {
+        margin-top: 10px;
+    }
+}
+*******************************************************************************
+
+Explanation:
+
+    Typography: Uses the Raleway font imported from Google Fonts.
+    Layout: Centers content and provides spacing with margins and paddings.
+    Buttons: Styled with consistent colors, padding, and hover effects.
+    Forms: Inputs are styled for better readability and alignment.
+    Responsive Design: Media queries adjust layouts for smaller screens.
+
+5. Running the Application
+a. Start the Server
+Ensure all files are saved, and then start the server using nodemon.
+
+npm start
+
+You should see:
+
+Server running on port 3002
+
+
+
+
+
+
+
+
+
+
+
+
+
+

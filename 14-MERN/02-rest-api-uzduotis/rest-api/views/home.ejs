@@ -1,0 +1,121 @@
+<%- include('partials/header'); -%>
+
+<h1 class="title">Programuotojai API</h1>
+<div id="homepage">
+    <h2>Surask programuotoją šalia savęs!</h2>
+    <div id="button-container">
+        <a href="/new"><button class="add-dev-button">Pridėti Naują Programuotoją</button></a>
+    </div>
+    <div id="devs"></div>
+</div>
+
+<!-- Include Babel for JSX transformation -->
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<!-- Include React and ReactDOM -->
+<script src="https://unpkg.com/react@15/dist/react.js"></script>
+<script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+
+<script type="text/babel">
+    let Devs = React.createClass({
+        getInitialState: function() {
+            return { devs: [] };
+        },
+        render: function () {
+            let devs = this.state.devs.map((dev, index) => (
+                <li key={index}>
+                    <span className={dev.laisvas ? 'true' : 'false'}></span>
+                    <span className='name'>{dev.vardas}</span>
+                    <span className='rank'>{dev.tech.join(', ')}</span>
+                    <span className='dist'>{Math.floor(dev.distance / 1000)}km</span>
+                    <div className="button-group">
+                        <button className="update-button" onClick={() => this.handleUpdate(dev)}>Atnaujinti</button>
+                        <button className="delete-button" onClick={() => this.handleDelete(dev._id)}>Ištrinti</button>
+                    </div>
+                </li>
+            ));
+            return (
+                <div className="dev-container">
+                    <form id='search' onSubmit={this.handleSubmit}>
+                        <label htmlFor="ilguma">Ilguma:</label>
+                        <input type="number" id="ilguma" ref={(input) => this.lng = input} placeholder='ilguma' required />
+                        <label htmlFor="platuma">Platuma:</label>
+                        <input type="number" id="platuma" ref={(input) => this.lat = input} placeholder='platuma' required />
+                        <input type="submit" value='Rasti programuotojus' />
+                    </form>
+                    <ul>{devs}</ul>
+                </div>
+            );
+        },
+        handleSubmit: function(e) {
+            e.preventDefault();
+            let lng = this.lng.value;
+            let lat = this.lat.value;
+
+            fetch('/api/programuotojai/?lng=' + lng + '&lat=' + lat)
+                .then(response => {
+                    if (!response.ok) throw new Error('Network response was not ok');
+                    return response.json();
+                })
+                .then(json => {
+                    this.setState({ devs: json });
+                })
+                .catch(err => console.log('Error during fetch:', err));
+        },
+        handleDelete: function(devId) {
+            if (!confirm('Ar tikrai norite ištrinti šį programuotoją?')) return;
+
+            fetch('/api/programuotojai/' + devId, { method: 'DELETE' })
+                .then(response => {
+                    if (!response.ok) throw new Error('Nepavyko ištrinti');
+                    return response.json();
+                })
+                .then(deletedDev => {
+                    // Option 1: Refresh the page
+                    // window.location.reload();
+
+                    // Option 2: Automatically update the list without refreshing
+                    const updatedDevs = this.state.devs.filter(dev => dev._id !== deletedDev.deletedDev._id);
+                    this.setState({ devs: updatedDevs });
+                    console.log('Programuotojas ištrintas:', deletedDev);
+                })
+                .catch(err => console.log('Error during delete:', err));
+        },
+        handleUpdate: function(dev) {
+            // Example: Prompt user for new data (can be enhanced with a proper form/modal)
+            let newVardas = prompt("Įveskite naują vardą:", dev.vardas);
+            if (newVardas === null) return; // Cancelled
+
+            let newTech = prompt("Įveskite naujas technologijas (kableliais atskirtas sąrašas):", dev.tech.join(', '));
+            if (newTech === null) return; // Cancelled
+
+            let newLaisvas = confirm("Ar programuotojas dabar laisvas?");
+
+            const updatedPratimas = {
+                vardas: newVardas,
+                tech: newTech.split(',').map(t => t.trim()),
+                laisvas: newLaisvas,
+                // Optionally, update location here if needed
+            };
+
+            fetch('/api/programuotojai/' + dev._id, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(updatedPratimas)
+            })
+            .then(response => {
+                if (!response.ok) throw new Error('Nepavyko atnaujinti');
+                return response.json();
+            })
+            .then(updatedDev => {
+                const updateDevs = this.state.devs.map(d => d._id === updatedDev._id ? updatedDev : d);
+                this.setState({ devs: updateDevs });
+                console.log('Programuotojas atnaujintas:', updatedDev);
+            })
+            .catch(err => console.log('Error during update:', err));
+        }
+    });
+
+    ReactDOM.render(<Devs />, document.getElementById('devs'));
+</script>
+
+<%- include('partials/footer'); -%>

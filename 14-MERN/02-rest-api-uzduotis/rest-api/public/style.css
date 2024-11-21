@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap');
+
+body{
+    font-family: Raleway, sans-serif;
+    color: #555;
+    background: #ff5252;
+    margin: 10px 30px;
+}
+
+.title{
+    color: #fff;
+    text-align: center;
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+#homepage{
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 20px;
+    background: #fdfdfd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+#button-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.add-dev-button {
+    padding: 10px 20px;
+    background-color: #007BFF; /* Blue */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.add-dev-button:hover {
+    background-color: #0056b3;
+}
+
+form {
+    max-width: 350px;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+label{
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+input[type="text"],
+input[type="number"]{
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+}
+
+input[type="checkbox"]{
+    margin-top: 10px;
+}
+
+input[type="submit"]{
+    background: #555;
+    color: #fff;
+    border: 0;
+    padding: 10px;
+    font-size: 18px;
+    width: 200px;
+    margin: 20px auto 0 auto;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background: #333;
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+}
+
+li{
+    padding: 15px;
+    background: #eee;
+    list-style-type: none;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+span{
+    display: inline-block;
+    margin: 0 20px;
+}
+
+span.dist{
+    color: green;
+    float: right;
+}
+
+span.true{
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    background: green;
+}
+
+span.false{
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    background: #ff5252;
+}
+
+/* Button Styles */
+.update-button, .delete-button {
+    margin-left: 10px; /* Adds space between the buttons */
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: Raleway, sans-serif; /* Consistent font */
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.update-button {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+
+.update-button:hover {
+    background-color: #45a049;
+}
+
+.delete-button {
+    background-color: #ff4d4d; /* Red */
+    color: white;
+}
+
+.delete-button:hover {
+    background-color: #ff1a1a;
+}
+
+/* Button Group for Consistent Spacing */
+.button-group {
+    display: flex;
+    gap: 10px; /* Consistent space between buttons */
+}
+
+/* Additional Styles for Add Developer Form */
+.error-message {
+    color: #ff1a1a;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.success-message {
+    color: #4CAF50;
+    text-align: center;
+    margin-top: 10px;
+}
+
+#addDeveloper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fdfdfd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 600px) {
+    body{
+        margin: 10px;
+    }
+
+    form, #addDeveloper {
+        padding: 10px;
+    }
+
+    input[type="text"],
+    input[type="number"]{
+        width: 100%;
+    }
+
+    input[type="submit"]{
+        width: 100%;
+    }
+
+    .add-dev-button {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .button-group {
+        margin-top: 10px;
+    }
+}

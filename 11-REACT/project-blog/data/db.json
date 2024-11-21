@@ -1,0 +1,22 @@
+{
+    "blogs": [
+      {
+        "title": "Mano nujas tinklapis",
+        "body": "lorem ipsum...",
+        "autorius": "Andrius",
+        "id": 1
+      },
+      {
+        "title": "Patarimai pradedantiesiems",
+        "body": "lorem ipsum...",
+        "autorius": "Tomas",
+        "id": 2
+      },
+      {
+        "title": "Nauja karjera",
+        "body": "lorem ipsum...",
+        "autorius": "Dovile",
+        "id": 3
+      }
+    ]
+  }
